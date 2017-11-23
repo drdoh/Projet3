@@ -9,27 +9,26 @@
         <div class="row no-gutters popup-gallery">
           <ul class="list-group">
             <?php
-            while ($data = $posts->fetch()) {
-              //var_dump($data['img']);
-            $extrait = substr( htmlspecialchars($data['content']),0,600);
+            foreach($post as $datas){
+            
+            $extrait = substr( htmlspecialchars($datas['content']),0,600);
             ?>
             <li class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="row">
                     <div class="col-6">
-                        <a class="portfolio-box" href="index.php?action=post&id=<?=$data['id']?>">
-                        <img class="img-fluid" src="<?=$data['img']?>" alt="">
+                        <a class="portfolio-box" href="index.php?action=post&id=<?=$datas['id']?>">
+                        <img class="img-fluid" src="<?=$datas['img']?>" alt="">
                         </a>
                     </div>
                     <div class="col-6">
-                        <h2>Chapitre <?=$data['chapter']?> : <?= htmlspecialchars($data['title']) ?> </h2>
+                        <h2>Chapitre <?=$datas['chapter']?> : <?=$datas['title'] ?> </h2>
                         <div><?=$extrait?> ....</div>
-                        <a href="index.php?action=post&id=<?=$data['id']?>" >à suivre...</a>                
+                        <a href="index.php?action=post&id=<?=$datas['id']?>" >à suivre...</a>                
                     </div>           
                 </div>
             </li> 
             <?php
-            }
-            $posts->closeCursor();
+            }            
             ?>
             </ul>
         </div>

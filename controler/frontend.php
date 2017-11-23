@@ -25,6 +25,8 @@ function showAdmin(){
 function allPosts(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $posts = $postManager->getAllPosts();
+    $post = $posts->fetchAll();
+    $posts->closeCursor();
     require('view/nav-layout.php');
     require('view/frontend/postlistView.php');
 }
