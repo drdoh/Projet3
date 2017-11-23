@@ -11,6 +11,8 @@ class Comment {
     private $_commentDate;
     private $_alert;
 
+    //Hydrate......
+
     // SETTER
     public function setId($id){
         if(!isint($id)){

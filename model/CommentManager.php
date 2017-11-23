@@ -1,21 +1,17 @@
 <?php 
 namespace JeanForteroche\Blog\Model;
 
-use JeanForteroche\Blog\Model\Manager;
+use JeanForteroche\Blog\Model\DBManager;
 
 require_once('model/Manager.php');
 
 class CommentManager extends Manager{
 
-    public function postComment($postId, $author, $comment)
-    {
-      
-      
-      // verif
-      
-      $db = $this->dbConnect();
-        
-        $comments = $db->prepare('  INSERT INTO comments(post_id, author, comment) 
+
+
+    public function addComment($postId, $author, $comment)
+    { 
+        $comments = $this->_db->prepare('  INSERT INTO comments(post_id, author, comment) 
                                     VALUES (:post_id, :author, :comment)
                                 ');
         $affectedLines = $comments->execute(array(
@@ -29,8 +25,7 @@ class CommentManager extends Manager{
 
     public function getLastComments($postId)
     {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('  SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
+        $comments = $this->_db->prepare('  SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     WHERE post_id = ? 
                                     ORDER BY comment_date 
@@ -43,8 +38,7 @@ class CommentManager extends Manager{
 
     public function getAllComments($postId)
     {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('  SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
+        $comments = $this->_db->prepare('  SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     WHERE post_id = ? 
                                     ORDER BY comment_date 
@@ -56,8 +50,7 @@ class CommentManager extends Manager{
 
     public function getComment($commentId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('   SELECT id, post_id, author, comment
+        $req = $this->_db->prepare('   SELECT id, post_id, author, comment
                                 FROM comments
                                 WHERE id = ?
                                 ');
@@ -68,8 +61,7 @@ class CommentManager extends Manager{
     
     public function saveComment($commentId,$author,$comment)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('   UPDATE comments 
+        $req = $this->_db->prepare('   UPDATE comments 
                                 SET author= :newauthor, comment= :newcomment
                                 WHERE id = :id                                    
                                     ');
@@ -82,8 +74,7 @@ class CommentManager extends Manager{
 
     public function deleteComment($commentId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('   DELETE FROM comments 
+        $req = $this->_db->prepare('   DELETE FROM comments 
                                 WHERE id = :id                                  
                                 ');
         $req->execute(array(
@@ -93,8 +84,7 @@ class CommentManager extends Manager{
 
     public function alertComment($commentId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('   UPDATE comments 
+        $req = $this->_db->prepare('   UPDATE comments 
                                 SET alert= alert+1
                                 WHERE id = :id                                    
                                     ');
