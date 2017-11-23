@@ -5,13 +5,12 @@ use JeanForteroche\Blog\Model\Manager;
 
 require_once('model/Manager.php');
 
-class AdminManager extends Manager{
+class AdminManager extends DBManager{
 
     public function getPassword($name)
     {
         {
-            $db = $this->dbConnect();
-            $req = $db->prepare('   SELECT passwords
+            $req = $this->_db->prepare('   SELECT passwords
                                         FROM admins 
                                         WHERE names = ?
                                         ');

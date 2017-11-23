@@ -5,7 +5,7 @@ use JeanForteroche\Blog\Model\DBManager;
 
 require_once('model/Manager.php');
 
-class CommentManager extends Manager{
+class CommentManager extends DBManager{
 
 
 
