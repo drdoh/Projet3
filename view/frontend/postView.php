@@ -2,7 +2,7 @@
 <?php ob_start();?>
 
 <div class="container my-auto">
-    <h1><?= htmlspecialchars($post['title']) ?></h1>
+    <h1><?= $post['title'] ?></h1>
     <p><a href="index.php?action=listAllPosts">Retour à la liste des billets</a></p>
 
     <div>
@@ -23,18 +23,17 @@
         <h2>Commentaires</h2>
 
         <?php
-        while ($comment = $comments->fetch()) {
+        foreach($comment as $datas){
         ?>
             <div class="p-2 border  border-warning rounded">
-                <p ><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> <em>(<a href="index.php?action=alertComment&id=<?=$post['id']?>&commentId=<?=$comment['id']?>">Signalé</a>)</em></p>
+                <p ><strong><?= $datas['author'] ?></strong> le <?= $datas['comment_date_fr'] ?> <em>(<a href="index.php?action=alertComment&id=<?=$post['id']?>&commentId=<?=$datas['id']?>">Signalé</a>)</em></p>
                 <hr class="light">
-                <p><?= nl2br(htmlspecialchars($comment['comment'])) ?> </p>
+                <p><?= nl2br($datas['comment']) ?> </p>
                 
             </div>
             <br>
         <?php
-        }
-        $comments->closeCursor();
+        } 
         ?>
     </div>
 

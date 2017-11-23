@@ -36,6 +36,8 @@ function post(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getLastComments($_GET['id']);
+    $comment = $comments->fetchAll();
+    $comments->closeCursor();
     require('view/nav-layout.php');
     require('view/frontend/postView.php');
 }
