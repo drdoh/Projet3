@@ -25,7 +25,7 @@ class CommentManager extends DBManager{
 
     public function getLastComments($postId)
     {
-        $comments = $this->_db->prepare('  SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
+        $comments = $this->_db->prepare('  SELECT * /*DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
                                     FROM comments 
                                     WHERE post_id = ? 
                                     ORDER BY comment_date 

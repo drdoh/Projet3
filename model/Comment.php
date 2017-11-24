@@ -1,6 +1,7 @@
 <?php
 
 namespace JeanForteroche\Blog\Model;
+use Exception;
 
 class Comment {
 
@@ -11,11 +12,24 @@ class Comment {
     private $_commentDate;
     private $_alert;
 
-    //Hydrate......
+    public function __construct(array $datas){
+        self::hydrate($datas);
+    }
 
+
+    public function hydrate(array $datas){
+        
+        foreach($datas as $key => $value){
+            $method = 'set'.ucfirst($key);
+            
+            if(method_exists($this, $method)){
+                $this->$method($value);
+            }
+        }
+    }
     // SETTER
     public function setId($id){
-        if(!isint($id)){
+        if(!is_numeric($id)){
             throw new Exception('Erreur : l\'id utilisé n\'est pas un entier');
             return;
         }
@@ -27,8 +41,8 @@ class Comment {
         $this->_id = $id ;
     }
     
-    public function setPostId($postId){
-        if(!isint($postId)){
+    public function setPost_id($postId){
+        if(!is_numeric($postId)){
             throw new Exception('Erreur : l\'id utilisé n\'est pas un entier');
             return;
         }
@@ -68,11 +82,11 @@ class Comment {
     }
     
     public function setAlert($alert){
-        if(!isint($alert)){
+        if(!is_numeric($alert)){
             throw new Exception('Erreur : la valeur utilisé n\'est pas un entier');
             return;
         }
-        if($alert<1){
+        if($alert<0){
             throw new Exception('Erreur : la valeur utilisé doit etre positif');
             return;
         }

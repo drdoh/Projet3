@@ -4,6 +4,7 @@ require_once('model/CommentManager.php');
 require_once('model/PostManager.php');
 require_once('model/AdminManager.php');
 require_once('model/Post.php');
+require_once('model/Comment.php');
 
 function showIndex(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
@@ -37,14 +38,18 @@ function post(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $datas = $postManager->getPost($_GET['id']);
     $post = new JeanForteroche\Blog\Model\Post($datas);
+
     
     
     // Gestion des commentaire
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $comments = $commentManager->getLastComments($_GET['id']);
-    $comment = $comments->fetchAll();
-    $comments->closeCursor();
-
+    $req = $commentManager->getLastComments($_GET['id']);
+    $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+    foreach($datas as $data){
+        $comment= new JeanForteroche\Blog\Model\Comment($data);
+        var_dump($comment);
+    }
+    $req->closeCursor();
     // Gestion de la vue
     require('view/nav-layout.php');
     require('view/frontend/postView.php');

@@ -30,11 +30,11 @@
 
 
 
-    <?php
-         if(isset($nav)){echo $nav;}
-         if(isset($content)){echo $content;}
-         if(isset($footer)){echo $footer;}
-    ?>
+    <?php if(isset($nav)){echo $nav;}?>
+    <br/>
+    <?php if(isset($content)){echo $content;}?>
+    <br/>
+    <?php if(isset($footer)){echo $footer;}?>
 
     <!-- Bootstrap core JavaScript -->
     <script src="web/vendor/jquery/jquery.min.js"></script>
