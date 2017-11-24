@@ -2,16 +2,16 @@
 <?php ob_start();?>
 
 <div class="container my-auto">
-    <h1><?= $post['title'] ?></h1>
+    <h1><?= $post->title() ?></h1>
     <p><a href="index.php?action=listAllPosts">Retour à la liste des billets</a></p>
 
     <div>
         <h6>
-            <em> <?= $post['creation_date_fr'] ?></em>
+            <em> <?= $post->creation_date() ?></em>
         </h6>
         
         <div class="content" >
-            <?= $post['content'] ?>
+            <?= $post->content() ?>
         </div>
     </div>
 
@@ -59,6 +59,5 @@
 
 <?php
 $content = ob_get_clean();
-
 require('view/layout.php');
 ?>

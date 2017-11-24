@@ -58,7 +58,7 @@ class Comment {
         $this->_comment = $comment ;
     }
     
-    public function setCommentDate($date){
+    public function setComment_date($date){
         if(!is_string($date)){
             throw new Exception('Erreur : le titre utilisé n\'est pas du type string');
             return;

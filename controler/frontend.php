@@ -3,6 +3,7 @@ require_once('model/Manager.php');
 require_once('model/CommentManager.php');
 require_once('model/PostManager.php');
 require_once('model/AdminManager.php');
+require_once('model/Post.php');
 
 function showIndex(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
@@ -32,12 +33,19 @@ function allPosts(){
 }
 
 function post(){
+    // Gestion de l'article
     $postManager = new JeanForteroche\Blog\Model\PostManager();
+    $datas = $postManager->getPost($_GET['id']);
+    $post = new JeanForteroche\Blog\Model\Post($datas);
+    
+    
+    // Gestion des commentaire
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getLastComments($_GET['id']);
     $comment = $comments->fetchAll();
     $comments->closeCursor();
+
+    // Gestion de la vue
     require('view/nav-layout.php');
     require('view/frontend/postView.php');
 }

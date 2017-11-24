@@ -1,7 +1,7 @@
 <?php
 
 namespace JeanForteroche\Blog\Model;
-
+use Exception;
 class Post {
 
     private $_id;
@@ -11,9 +11,25 @@ class Post {
     private $_creation_date;
     private $_img;
 
+    
+    public function __construct(array $datas){
+        self::hydrate($datas);
+    }
+
+
+    public function hydrate(array $datas){
+        foreach($datas as $key => $value){
+            $method = 'set'.ucfirst($key);
+
+            if(method_exists($this, $method)){
+                $this->$method($value);
+            }
+        }
+    }
+
     // SETTER
     public function setId($id){
-        if(!isint($id)){
+        if(!is_numeric($id)){
             throw new Exception('Erreur : l\'id utilisé n\'est pas un entier');
             return;
         }
@@ -35,7 +51,7 @@ class Post {
     }
     
     public function setChapter($chapter){
-        if(!isint($chapter)){
+        if(!is_numeric($chapter)){
             throw new Exception('Erreur : le numero de chapitre utilisé n\'est pas un entier');
             return;
         }
@@ -56,20 +72,20 @@ class Post {
         $this->_content = $content ;
     }
     
-    public function setCreationDate($date){
-        if(!is_string($date)){
+    public function setCreation_date($date){
+        /*if(!is_string($date)){
             throw new Exception('Erreur : le titre utilisé n\'est pas du type string');
             return;
-        }
+        }*/
         
         $this->_creation_date = $date ;
     }
     
     public function setImg($img){
-        if(!is_string($img)){
+        /*if(!is_string($img)){
             throw new Exception('Erreur : le titre utilisé n\'est pas du type string');
             return;
-        }
+        }*/
         
         $this->_img = $img ;
     }
