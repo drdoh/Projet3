@@ -1,6 +1,5 @@
 
 <?php
-var_dump($post->id());
 
  ob_start();?>
 
@@ -26,14 +25,13 @@ var_dump($post->id());
         <h2>Commentaires</h2>
 
         <?php
-        var_dump($comment);
-        foreach($comment as $datas){
+        foreach($datas as $comment){
         ?>
             <div class="p-2 border  border-warning rounded">
-                <p ><strong><?= $datas['author'] ?></strong> le <?= $datas['comment_date_fr'] ?> <em>(<a href="index.php?action=alertComment&id=<?=$post['id']?>&commentId=<?=$datas['id']?>">Signalé</a>)</em></p>
+                <p ><strong><?= $comment->author ?></strong> le <?= $comment->comment_date ?> <em>(<a href="index.php?action=alertComment&id=<?=$post->id()?>&commentId=<?=$comment->id?>">Signalé</a>)</em></p>
                 <hr class="light">
-                <p><?= nl2br($datas['comment']) ?> </p>
-                <!-- MODIFIER LA RECUPERATION DES DONNEES !!! -->
+                <p><?= nl2br($comment->comment) ?> </p>
+               
             </div>
             <br>
         <?php
@@ -63,6 +61,5 @@ var_dump($post->id());
 
 <?php
 $content = ob_get_clean();
-var_dump($content);
 require('view/layout.php');
 ?>

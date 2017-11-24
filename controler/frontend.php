@@ -39,17 +39,10 @@ function post(){
     $datas = $postManager->getPost($_GET['id']);
     $post = new JeanForteroche\Blog\Model\Post($datas);
 
-    
-    
     // Gestion des commentaire
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $req = $commentManager->getLastComments($_GET['id']);
-    $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-    foreach($datas as $data){
-        $comment= new JeanForteroche\Blog\Model\Comment($data);
-        var_dump($comment);
-    }
-    $req->closeCursor();
+    $datas = $commentManager->getLastComments($_GET['id']);
+    
     // Gestion de la vue
     require('view/nav-layout.php');
     require('view/frontend/postView.php');

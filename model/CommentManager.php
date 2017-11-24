@@ -2,7 +2,7 @@
 namespace JeanForteroche\Blog\Model;
 
 use JeanForteroche\Blog\Model\DBManager;
-
+use \PDO;
 require_once('model/Manager.php');
 
 class CommentManager extends DBManager{
@@ -25,15 +25,16 @@ class CommentManager extends DBManager{
 
     public function getLastComments($postId)
     {
-        $comments = $this->_db->prepare('  SELECT * /*DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
+        $req = $this->_db->prepare('  SELECT * /*DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
                                     FROM comments 
                                     WHERE post_id = ? 
                                     ORDER BY comment_date 
                                     DESC LIMIT 0, 7
                                     ');
-        $comments->execute(array($postId));
-    
-        return $comments;
+        $req->execute(array($postId));
+        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+        $req->closeCursor();
+        return $datas;
     }
 
     public function getAllComments($postId)
