@@ -2,6 +2,7 @@
 
 namespace JeanForteroche\Blog\Model;
 use \PDO;
+
 require_once('model/Manager.php');
 
 class PostManager extends DBManager{

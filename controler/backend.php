@@ -1,7 +1,6 @@
 <?php
-require_once('model/Manager.php');
-require_once('model/CommentManager.php');
-require_once('model/PostManager.php');
+require_once('model/Autoloader.php');
+Autoloader::register();
 
 function showBackControleur(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();

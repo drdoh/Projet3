@@ -45,7 +45,7 @@
 ?>
         <div class="col-lg-4 col-sm-6">
             <a class="portfolio-box" href="index.php?action=post&id=<?=$post->id?>">
-              <img class="img-fluid" src="<?=$post->img?>" >
+              <img class="img-fluid align-middle" src="<?=$post->img?>" >
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">

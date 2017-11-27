@@ -31,9 +31,9 @@
 
 
     <?php if(isset($nav)){echo $nav;}?>
-    <br/>
+   
     <?php if(isset($content)){echo $content;}?>
-    <br/>
+
     <?php if(isset($footer)){echo $footer;}?>
 
     <!-- Bootstrap core JavaScript -->

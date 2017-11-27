@@ -1,10 +1,6 @@
 <?php
-require_once('model/Manager.php');
-require_once('model/CommentManager.php');
-require_once('model/PostManager.php');
-require_once('model/AdminManager.php');
-require_once('model/Post.php');
-require_once('model/Comment.php');
+require_once('model/Autoloader.php');
+Autoloader::register();
 
 function showIndex(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
