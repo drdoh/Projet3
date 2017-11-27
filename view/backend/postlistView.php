@@ -14,8 +14,9 @@
         <ul class="list-group">
 
           <?php // BOUCLE + RECUPERATION DE L'EXTRAIT 
-          while ($data = $posts->fetch()) {
-          $extrait = substr($data['content'],0,500);
+          foreach ($datas as $post) {
+          
+           $extrait = substr(strip_tags($post->content),0,600);
           ?>
 
           <li class="list-group-item list-group-item-action flex-column align-items-start">
@@ -24,17 +25,17 @@
                 
 
                   <div class="col-sm-4 align-self-center">
-                    <a href="index.php?action=editpost&id=<?=$data['id']?>"><img class="img-fluid" src="web/img/portfolio/thumbnails/<?=$data['chapter']?>.jpg" alt=""></a>
+                    <a href="index.php?action=editpost&id=<?=$post->id?>"><img class="img-fluid" src="<?=$post->img?>" alt=""></a>
                   </div>
 
                   <div class="col-sm-6">
-                      <h3><i class="fa fa-book" aria-hidden="true"></i>Chapitre <?=$data['chapter']?> : <?= htmlspecialchars($data['title']) ?> </h3>
-                      <p><?=htmlspecialchars($extrait)?>...</p>
+                      <h3><i class="fa fa-book" aria-hidden="true"></i>Chapitre <?=$post->chapter?> : <?= $post->title ?> </h3>
+                      <p><?=$extrait?>...</p>
                   </div>
 
                   <div class="col-sm-2 align-self-center">
                     <div>
-                      <a href="index.php?action=editpost&id=<?=$data['id']?>">
+                      <a href="index.php?action=editpost&id=<?=$post->id?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           Modifier
@@ -42,7 +43,7 @@
                       </a>
                     </div>
                     <div>
-                      <a href="index.php?action=deletepost&id=<?=$data['id']?>">
+                      <a href="index.php?action=deletepost&id=<?=$post->id?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-trash" aria-hidden="true"></i>
                           Supprimer
@@ -50,7 +51,7 @@
                       </a>
                     </div>
                     <div>
-                      <a href="index.php?action=showcomments&id=<?=$data['id']?>">
+                      <a href="index.php?action=showcomments&id=<?=$post->id?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                           Commentaires
@@ -62,8 +63,7 @@
             </div>     
           </li> 
           <?php
-          }
-          $posts->closeCursor();            
+          }    
           ?>
       </ul>
     </div>

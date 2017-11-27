@@ -4,7 +4,7 @@ Autoloader::register();
 
 function showBackControleur(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $posts = $postManager->getAllPosts();
+    $datas = $postManager->getAllPosts();
     require('view/nav-layout.php');
     require('view/backend/postlistView.php');
 }
