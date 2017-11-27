@@ -12,12 +12,14 @@ class PostManager extends DBManager{
                             FROM posts 
                             ORDER BY id 
                             ');
-    return $req;
+        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+        $req->closeCursor();
+        return $datas;
     }
 
-    public function getPosts()
+    public function getLastPosts()
     {
-        $req = $this->_db->query(' SELECT id, title, content, chapter, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
+        $req = $this->_db->query(' SELECT id, title, content, chapter, img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
                             FROM posts 
                             ORDER BY id 
                             DESC LIMIT 0, 6
@@ -54,6 +56,7 @@ class PostManager extends DBManager{
             
             'id'=>$id
         ));
+        $req->closeCursor();
     }
 
     public function addPost($title,$content)
@@ -66,6 +69,7 @@ class PostManager extends DBManager{
             'title'=>$title,
             'content'=>$content
         ));
+        $req->closeCursor();
     }
     
     public function deletePost($id)
@@ -77,6 +81,7 @@ class PostManager extends DBManager{
         $req->execute(array(
             'id'=>$id
         ));
+        $req->closeCursor();
     }
 
 }

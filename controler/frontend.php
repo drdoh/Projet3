@@ -8,7 +8,7 @@ require_once('model/Comment.php');
 
 function showIndex(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $datas= $postManager->getPosts();
+    $datas= $postManager->getLastPosts();
     require('view/index-nav-layout.php');
     require('view/frontend/indexView.php');
 }
@@ -26,9 +26,8 @@ function showAdmin(){
 
 function allPosts(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $posts = $postManager->getAllPosts();
-    $post = $posts->fetchAll();
-    $posts->closeCursor();
+    $datas = $postManager->getAllPosts();
+   
     require('view/nav-layout.php');
     require('view/frontend/postlistView.php');
 }
