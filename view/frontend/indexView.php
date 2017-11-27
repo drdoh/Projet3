@@ -38,30 +38,28 @@
 
     <section class="p-0" id="portfolio">
       <div class="container-fluid p-0">
-        <div class="row no-gutters popup-gallery">
+        <div class="row no-gutters">
           
 <?php
-    while ($data = $posts->fetch()) {
-    ?>
+    foreach($datas as $post){   
+?>
         <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="index.php?action=post&id=<?=$data['id']?>">
-              <img class="img-fluid" src="web/img/portfolio/thumbnails/<?=$data['chapter']?>.jpg" alt="">
+            <a class="portfolio-box" href="index.php?action=post&id=<?=$post->id?>">
+              <img class="img-fluid" src="web/img/portfolio/thumbnails/<?=$post->chapter?>.jpg" >
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                  <?= htmlspecialchars($data['title']) ?>
+                    <?=$post->title?>
                   </div>
                   <div class="project-name">
-                    Chapitre <?=$data['chapter']?> : <?= htmlspecialchars($data['title']) ?>
+                    Chapitre <?=$post->chapter?> : <?=$post->title?>
                   </div>
                 </div>
               </div>
             </a>
           </div>
     <?php
-    }
-    $posts->closeCursor();
-?>
+    } ?>
         </div>
       </div>
     </section>

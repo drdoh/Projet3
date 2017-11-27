@@ -1,7 +1,7 @@
 <?php 
 
 namespace JeanForteroche\Blog\Model;
-
+use \PDO;
 require_once('model/Manager.php');
 
 class PostManager extends DBManager{
@@ -12,7 +12,6 @@ class PostManager extends DBManager{
                             FROM posts 
                             ORDER BY id 
                             ');
-
     return $req;
     }
 
@@ -23,8 +22,9 @@ class PostManager extends DBManager{
                             ORDER BY id 
                             DESC LIMIT 0, 6
                             ');
-
-    return $req;
+        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+        $req->closeCursor();
+        return $datas;
     }
 
     public function getPost($postId)
@@ -36,9 +36,9 @@ class PostManager extends DBManager{
                                     ');
 
         $req->execute(array($postId));
-        $post = $req->fetch();
-        
-    return $post;
+        $datas = $req->fetch();
+        $req->closeCursor();
+        return $datas;
     }
 
     public function updatePost($title,$content,$id)

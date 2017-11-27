@@ -8,7 +8,7 @@ require_once('model/Comment.php');
 
 function showIndex(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $posts= $postManager->getPosts();
+    $datas= $postManager->getPosts();
     require('view/index-nav-layout.php');
     require('view/frontend/indexView.php');
 }
