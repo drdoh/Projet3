@@ -60,15 +60,17 @@ class PostManager extends DBManager{
         $req->closeCursor();
     }
 
-    public function addPost($title,$content)
+    public function addPost($title,$content,$chapter, $img)
     {
 
-        $req = $this->_db->prepare('   INSERT INTO posts(title, content) 
-                                VALUES (:title,:content)                                  
+        $req = $this->_db->prepare('   INSERT INTO posts(title, content, chapter, img) 
+                                VALUES (:title,:content, :chapter, :img)                                  
                                 ');
         $req->execute(array(
             'title'=>$title,
-            'content'=>$content
+            'content'=>$content,
+            'chapter'=>$chapter,
+            'img'=>$img
         ));
         $req->closeCursor();
     }

@@ -19,7 +19,9 @@ function stopSession(){
 
 function editPost($postId){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $post=$postManager->getPost($postId);
+    $datas=$postManager->getPost($postId);
+    $post = new JeanForteroche\Blog\Model\Post($datas);
+    
     require('view/nav-layout.php');
     require('view/backend/postView.php');
 }
@@ -36,11 +38,20 @@ function updatePost(){
     header('Location: index.php');
 }
 
-function addPost($title,$content){
+function addPost($title,$content,$chapter,$imgFiles){
+    
+    $FileManager = new JeanForteroche\Blog\Model\FileManager();
+    $FileManager->upload($imgFiles,$chapter);
+    
+    $img=pathinfo($imgFiles['img']['name']);
+    $imgUrl = 'web/img/portfolio/thumbnails/'.$chapter.'.'.$img['extension'];
     
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $postManager->addPost($title,$content);   
+    $postManager->addPost($title, $content, $chapter,$imgUrl);   
     header('Location: index.php');
+}
+
+function checkFiles($imgFiles, $chapter){
 }
 
 function newPost(){

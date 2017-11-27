@@ -92,7 +92,7 @@ try{
                     break;
 
                     case 'addpost': 
-                        addPost($_POST['title'],$_POST['content']);
+                        addPost($_POST['title'],$_POST['content'],$_POST['chapter'],$_FILES);
                     break;
 
                     case 'showcomments': 
