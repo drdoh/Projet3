@@ -10,12 +10,12 @@ function showIndex(){
 }
 
 function showAboutMe(){
-    require('view/nav-layout.php');
+    require('controler/nav-controler.php');
     require('view/footer-layout.php');
     require('view/frontend/aboutmeView.php');
 }
 
 function showAdmin(){
-    require('view/nav-layout.php');
+    require('controler/nav-controler.php');
     require('view/frontend/signinView.php');
 }

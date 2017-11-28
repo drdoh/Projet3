@@ -1,4 +1,6 @@
 <?php
+/* ::::::::::: \\\\\\\\\\\\\ BACKEND ROUTER ///////////// ::::::::::: */
+
 require('controler/backend/admin_controler.php');
 require('controler/backend/comment_controler.php');
 require('controler/backend/post_controler.php');
@@ -6,11 +8,13 @@ require('controler/backend/post_controler.php');
 
 if (isset($_GET['action'])){
     switch ($_GET['action']){
+
+    /* -------------- \\\\\\\ ADMIN ////// ----------------- */  
         case 'disconnexion': 
             Header('Location: index.php');
             stopSession();
         break;
-
+    /* -------------- \\\\\\\ POST////// ----------------- */ 
         case 'editpost': 
             editPost($_GET['id']);
         break;
@@ -30,7 +34,7 @@ if (isset($_GET['action'])){
         case 'addpost': 
             addPost($_POST['title'],$_POST['content'],$_POST['chapter'],$_FILES);
         break;
-
+    /* -------------- \\\\\\\ COMMENT ////// ----------------- */ 
         case 'showcomments': 
             showComments($_GET['id']);
         break;

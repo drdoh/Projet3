@@ -1,5 +1,7 @@
 <?php
 
+/* ::::::::::: \\\\\\\\\\\\\ FRONTEND ROUTER ///////////// ::::::::::: */
+
 require('controler/frontend/admin_controler.php');
 require('controler/frontend/comment_controler.php');
 require('controler/frontend/post_controler.php');
@@ -7,11 +9,29 @@ require('controler/frontend/view_controler.php');
 
 if (isset($_GET['action'])) { 
             switch($_GET['action']){
-                
+
+/* -------------- \\\\\\\ ADMIN ////// ----------------- */                 
+
+                case "admin" : 
+                    showAdmin();
+                    break;
+
+                case "signin" : 
+                    signin($_POST['name'],$_POST['password']);  
+                    break;
+
+/* -------------- \\\\\\\ VIEW ////// ----------------- */  
+
                 case "showIndex" : 
                     showIndex();
                     break;
                 
+                case "aboutme" : 
+                    showAboutMe();  
+                    break;   
+
+/* -------------- \\\\\\\ POST////// ----------------- */
+
                 case "post" : 
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         post();
@@ -22,7 +42,13 @@ if (isset($_GET['action'])) {
 
                     }
                     break;
-                
+
+                case "listAllPosts" : 
+                    allPosts();
+                    break;
+
+    /* -------------- \\\\\\\ COMMENT ////// ----------------- */   
+
                 case "addComment" : 
                     if (isset($_GET['id']) && (int) $_GET['id'] > 0){
                         if(!empty($_POST['author']) && !empty($_POST['comment'])) {
@@ -39,24 +65,7 @@ if (isset($_GET['action'])) {
                     break;
                 
                 case "alertComment" : 
-
                     alertComment($_GET['commentId'], $_GET['id']);  
-                    break;
-
-                case "listAllPosts" : 
-                    allPosts();
-                    break;
-                
-                case "admin" : 
-                    showAdmin();
-                    break;
-                
-                case "signin" : 
-                    signin($_POST['name'],$_POST['password']);  
-                    break;
-                
-                case "aboutme" : 
-                    showAboutMe();  
                     break;
 
                 default : 

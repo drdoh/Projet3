@@ -7,7 +7,7 @@ function editPost($postId){
     $datas=$postManager->getPost($postId);
     $post = new JeanForteroche\Blog\Model\Post($datas);
     
-    require('view/nav-layout.php');
+    require('controler/nav-controler.php');
     require('view/backend/postView.php');
 }
 
@@ -24,12 +24,13 @@ function deletePost($id,$chapter){
 }
 
 function updatePost($title,$content,$chapter,$imgFiles){ 
-    $FileManager = new JeanForteroche\Blog\Model\FileManager();
-    $FileManager->upload($imgFiles,$chapter);
+    if($imgFiles['img']['name']!= ''){
+        $FileManager = new JeanForteroche\Blog\Model\FileManager();
+        $FileManager->upload($imgFiles,$chapter);
     
-    $img=pathinfo($imgFiles['img']['name']);
-    $imgUrl = 'web/img/portfolio/thumbnails/'.$chapter.'.'.$img['extension'];
-    
+        $img=pathinfo($imgFiles['img']['name']);
+        $imgUrl = 'web/img/portfolio/thumbnails/'.$chapter.'.'.$img['extension'];
+    }
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $postManager->updatePost($_POST['title'],$_POST['content'],$_GET['id']);   
     header('Location: index.php');

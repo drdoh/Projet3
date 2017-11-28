@@ -1,12 +1,11 @@
-<?php $title = 'Mon blog'; ?>
 <?php 
-  if(isset($_SESSION['admin'])){
-    $value = 'Déconnexion';
-    $url = 'index.php?action=disconnexion' ;
-  }else{
-    $value = 'Connexion';
-    $url = 'index.php?action=admin' ;
-  }
+  // if(isset($_SESSION['admin'])){
+  //   $value = 'Déconnexion';
+  //   $url = 'index.php?action=disconnexion' ;
+  // }else{
+  //   $value = 'Connexion';
+  //   $url = 'index.php?action=admin' ;
+  // }
 ?>
 
 
@@ -22,18 +21,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="<?='index.php?action=aboutme'?>">A Propos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#last-post">Mes derinieres Aventures</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="<?=$url?>"><?=$value?></a>
-            </li>
+
+            <?php if(isset($button1)){echo $button1;}?>
+            <?php if(isset($button2)){echo $button2;}?>
+            <?php if(isset($button3)){echo $button3;}?>
+            <?php if(isset($buttonAdmin)){echo $buttonAdmin;}?>
+          
+
           </ul>
         </div>
       </div>
