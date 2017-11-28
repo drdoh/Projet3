@@ -2,9 +2,6 @@
 require_once('model/Autoloader.php');
 Autoloader::register();
 
-
-/* \\\\\\\\\\\::: POSTS CONTROLER ::::///////////: */
-
 function editPost($postId){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $datas=$postManager->getPost($postId);
@@ -38,9 +35,6 @@ function addPost($title,$content,$chapter,$imgFiles){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $postManager->addPost($title, $content, $chapter,$imgUrl);   
     header('Location: index.php');
-}
-
-function checkFiles($imgFiles, $chapter){
 }
 
 function newPost(){

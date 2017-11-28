@@ -16,12 +16,33 @@ class FileManager {
                 $allowed_extension = array('jpg','jpeg','png','gif');
 
                 if(in_array($extention_upload,$allowed_extension)){
-                    move_uploaded_file($imgFiles['img']['tmp_name'],'web/img/portfolio/thumbnails/'.basename($chapter).'.'.$extention_upload);
+                    
+                    $resizedImg = $this->resize($imgFiles,$chapter,$extention_upload );
+                   
+                    move_uploaded_file($imgFiles['img']['tmp_name'],'web/img/portfolio/fullsize/'.basename($chapter).'.'.$extention_upload);
                 }
             }
         }
     }  
+    public function resize($imgFiles,$chapter,$extention_upload)
+    {
+        $filename = $imgFiles['img']['tmp_name'];
+        
+        header('Content-Type: image/jpeg');
 
+        list($width, $height) = getimagesize($filename);
+
+        $thumb = imagecreatetruecolor(650, 350);
+        $source = imagecreatefromjpeg($filename);
+        
+        imagecopyresampled($thumb, $source, 0, 0, 0, 0, 650, 350, $width, $height);
+        
+        
+        imagejpeg($thumb,'web/img/portfolio/thumbnails/'.$chapter.'.'.$extention_upload);
+      
+        imagedestroy($thumb);      
+        
+    }  
   
 
 }
