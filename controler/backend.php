@@ -26,9 +26,10 @@ function editPost($postId){
     require('view/backend/postView.php');
 }
 
-function deletePost($id){
+function deletePost($id,$chapter){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $postManager->deletePost($id);   
+    $postManager->deletePost($id);
+    unlink('web/img/portfolio/thumbnails/'.$chapter.'.jpg');   
     header('Location: index.php');
 }
 

@@ -80,7 +80,7 @@ try{
                     break;
 
                     case 'deletepost': 
-                        deletePost($_GET['id']);
+                        deletePost($_GET['id'],$_GET['chapter']);
                     break;
 
                     case 'updatepost': 

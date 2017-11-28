@@ -48,8 +48,8 @@ class PostManager extends DBManager{
     {
 
         $req = $this->_db->prepare('   UPDATE posts 
-                                SET content= :newcontent, title= :newtitle
-                                WHERE id = :id                                    
+                                    SET content= :newcontent, title= :newtitle
+                                    WHERE id = :id                                    
                                 ');
         $req->execute(array(
             'newcontent'=>$content,

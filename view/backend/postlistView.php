@@ -13,7 +13,7 @@
     <div class="container p-0">
         <ul class="list-group">
 
-          <?php // BOUCLE + RECUPERATION DE L'EXTRAIT 
+          <?php
           foreach ($datas as $post) {
           
            $extrait = substr(strip_tags($post->content),0,600);
@@ -43,7 +43,7 @@
                       </a>
                     </div>
                     <div>
-                      <a href="index.php?action=deletepost&id=<?=$post->id?>">
+                      <a href="index.php?action=deletepost&id=<?=$post->id?>&chapter=<?=$post->chapter?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-trash" aria-hidden="true"></i>
                           Supprimer
