@@ -20,7 +20,7 @@ if (isset($_GET['action'])){
         break;
 
         case 'updatepost': 
-            updatePost();
+            updatePost($_POST['title'],$_POST['content'],$_POST['chapter'],$_FILES);
         break;
 
         case 'newpost': 

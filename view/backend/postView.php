@@ -4,12 +4,14 @@ if(!isset($post)){
     $content='';
     $chapter='';
     $URL='?action=addpost';
+    $img='';
 }else{
     $title=$post->title();
     $content=$post->content();
     $chapter=$post->chapter();
     $URL='?action=updatepost&id='.$_GET['id'].'';
-}
+    $img='<img class="jumbotron" src="'.$post->img().'" style="width:100%;">';
+} 
 
 ob_start();
 
@@ -48,6 +50,13 @@ ob_start();
                 
 
                 <input class=" col-6 btn btn-primary h-50" type="file" name="img"/>
+                </div >
+                <div class="row">
+                    <div class="col-6 mx-auto"><hr>
+                        <?=$img?>
+                    </div>
+                </div>
+                
             </div> <br>
         </form>    
     </div>
