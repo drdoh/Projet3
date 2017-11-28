@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 
 <div class="container">
 
@@ -60,3 +63,8 @@
     </div>
   </section>
 </div>
+<?php
+$content = ob_get_clean();
+
+require('view/layout.php');
+?>

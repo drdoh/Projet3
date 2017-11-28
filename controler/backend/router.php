@@ -38,7 +38,8 @@ if (isset($_GET['action'])){
         
         case 'listcomment':
             allComments();
-    
+        break;
+        
         case 'showcomments': 
             showComments($_GET['id']);
         break;
