@@ -37,6 +37,16 @@ class CommentManager extends DBManager{
         return $datas;
     }
 
+    public function getAll()
+    {
+        $req = $this->_db->query('  SELECT *
+                                    FROM comments 
+                                    ORDER BY comment_date 
+                                    ');
+        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+        return $datas;
+    }
+
     public function getAllComments($postId)
     {
         $comments = $this->_db->prepare('  SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr

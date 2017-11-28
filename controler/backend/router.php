@@ -35,6 +35,10 @@ if (isset($_GET['action'])){
             addPost($_POST['title'],$_POST['content'],$_POST['chapter'],$_FILES);
         break;
     /* -------------- \\\\\\\ COMMENT ////// ----------------- */ 
+        
+        case 'listcomment':
+            allComments();
+    
         case 'showcomments': 
             showComments($_GET['id']);
         break;
@@ -52,8 +56,8 @@ if (isset($_GET['action'])){
         break;
 
         default: 
-            showBackControleur();
+            allPosts();
     }
 }else {
-showBackControleur();
+    allPosts();
 }

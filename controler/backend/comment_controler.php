@@ -3,6 +3,12 @@ require_once('model/Autoloader.php');
 Autoloader::register();
 
 /* \\\\\\\\\\\::: COMMENTS CONTROLER ::::///////////: */
+function allComments(){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $datas = $commentManager->getAll();
+    require('controler/nav-controler.php');
+    require('view/backend/commentListView.php');
+}
 
 function showComments($postId){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
