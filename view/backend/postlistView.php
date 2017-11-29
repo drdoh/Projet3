@@ -24,17 +24,17 @@
               <div class="row">
                 
 
-                  <div class="col-sm-4 align-self-center">
+                  <div class="col-xl-4 col-lg-6 align-self-center">
                     <a href="index.php?action=editpost&id=<?=$post->id?>"><img class="img-fluid" src="<?=$post->img?>" alt=""></a>
                   </div>
 
-                  <div class="col-sm-6">
+                  <div class="col-xl-6 col-lg-6">
                       <h3><i class="fa fa-book" aria-hidden="true"></i>Chapitre <?=$post->chapter?> : <?= $post->title ?> </h3>
-                      <p><?=$extrait?>...</p>
+                      <p class="text-justify"><?=$extrait?>...</p>
                   </div>
 
-                  <div class="col-sm-2 align-self-center">
-                    <div>
+                  <div class="col-xl-2 col-lg-12 align-self-center  text-lg-center text-xl-left">
+                    <div class="d-inline">
                       <a href="index.php?action=editpost&id=<?=$post->id?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -42,7 +42,7 @@
                         </button>
                       </a>
                     </div>
-                    <div>
+                    <div class="d-inline">
                       <a href="index.php?action=deletepost&id=<?=$post->id?>&chapter=<?=$post->chapter?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-trash" aria-hidden="true"></i>
@@ -50,7 +50,7 @@
                         </button>
                       </a>
                     </div>
-                    <div>
+                    <div class="d-inline">
                       <a href="index.php?action=showcomments&id=<?=$post->id?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-comments" aria-hidden="true"></i>

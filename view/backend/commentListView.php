@@ -1,5 +1,6 @@
 <?php
 ob_start();
+
 ?>
 
 <div class="container">
@@ -22,14 +23,14 @@ ob_start();
 
                   
 
-                  <div class="col-sm-6">
+                  <div class="col-sm-10">
                       <h3> <?=$comment->author?> </h3>
                       <p><?=$comment->comment?></p>
                   </div>
 
                   <div class="col-sm-2 align-self-center">
                     <div>
-                      <a href="index.php?action=editpost&id=<?=$comment->id?>">
+                      <a href="index.php?action=editcomment&id=<?=$comment->id?>&postid=<?=$comment->post_id?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           Modifier
@@ -37,18 +38,10 @@ ob_start();
                       </a>
                     </div>
                     <div>
-                      <a href="index.php?action=deletepost&id=<?=$comment->id?>">
+                      <a href="index.php?action=deletecomment&id=<?=$comment->id?>&postid=<?=$comment->post_id?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-trash" aria-hidden="true"></i>
                           Supprimer
-                        </button>
-                      </a>
-                    </div>
-                    <div>
-                      <a href="index.php?action=showcomments&id=<?=$comment->id?>">
-                        <button class="btn btn-outline-primary">
-                          <i class="fa fa-comments" aria-hidden="true"></i>
-                          Commentaires
                         </button>
                       </a>
                     </div>

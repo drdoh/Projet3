@@ -6,7 +6,7 @@ function allPosts(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $datas = $postManager->getAllPosts();
    
-    require('view/nav-layout.php');
+    require('controler/nav-controler.php');
     require('view/frontend/postlistView.php');
 }
 
@@ -21,6 +21,6 @@ function post(){
     $datas = $commentManager->getLastComments($_GET['id']);
     
     // Gestion de la vue
-    require('view/nav-layout.php');
+    require('controler/nav-controler.php');
     require('view/frontend/postView.php');
 }

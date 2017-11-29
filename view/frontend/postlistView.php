@@ -1,5 +1,6 @@
 <?php ob_start();?>
 <div class="container">
+
 <h1 class="text-center"> LISTE DES CHAPITRES </h1>
 <p><a href="index.php">Retour à l'accueil</a></p>
     <div class="">
@@ -16,15 +17,15 @@
             ?>
             <li class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-xl-4 col-lg-6 align-self-center">
                         <a class="portfolio-box" href="index.php?action=post&id=<?=$post->id?>">
                         <img class="img-fluid" src="<?=$post->img?>" alt="">
                         </a>
                     </div>
-                    <div class="col-6">
+                    <div class="col-xl-8 col-lg-6">
                         <h2>Chapitre <?=$post->chapter?> : <?=$post->title ?> </h2>
-                        <div><?=$extrait?> ....</div>
-                        <a href="index.php?action=post&id=<?=$post->id?>" >à suivre...</a>                
+                        <p class="text-justify"><?=$extrait?> ....</p>
+                        <a href="index.php?action=post&id=<?=$post->id?>">à suivre...</a>                
                     </div>           
                 </div>
             </li> 
