@@ -3,6 +3,12 @@ require_once('model/Autoloader.php');
 Autoloader::register();
 
 /* \\\\\\\\\\\::: COMMENTS CONTROLER ::::///////////: */
+function indexComments(){
+    //$commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    //$datas = $commentManager->getAllComments();
+    require('controler/nav-controler.php');
+    require('view/backend/commentIndexView.php');
+}
 function allComments(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $datas = $commentManager->getAllComments();

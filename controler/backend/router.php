@@ -36,6 +36,10 @@ if (isset($_GET['action'])){
         break;
     /* -------------- \\\\\\\ COMMENT ////// ----------------- */ 
         
+        case 'indexcomment':
+            indexComments();
+        break;
+
         case 'listcomment':
             allComments();
         break;
