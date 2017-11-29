@@ -12,7 +12,9 @@ function addComment($postId, $author, $comment){
             throw new Exception('Impossible d\'ajouter le commentaire');
         }
         else{
-            header('Location: index.php?action=post&id='.$postId);
+            // Votre commentaire a bien ete envoyer
+            
+            //header('Location: index.php?action=post&id='.$postId);
         }
     }
     

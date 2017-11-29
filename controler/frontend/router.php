@@ -69,7 +69,7 @@ if (isset($_GET['action'])) {
                     break;
 
                 default : 
-                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
+                    throw new Exception('La page demandée n\'existe pas');
             }
         }else {
             showIndex();

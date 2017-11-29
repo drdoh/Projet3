@@ -1,5 +1,3 @@
-<?php $title = 'Mon blog'; ?>
-
 <?php ob_start(); ?>
 
     <!-- Navigation -->

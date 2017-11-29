@@ -5,17 +5,17 @@ Autoloader::register();
 /* \\\\\\\\\\\::: COMMENTS CONTROLER ::::///////////: */
 function allComments(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $datas = $commentManager->getAll();
+    $datas = $commentManager->getAllComments();
     require('controler/nav-controler.php');
     require('view/backend/commentListView.php');
 }
 
-function showComments($postId){
+function showPostComments($postId){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $comments=$commentManager->getAllComments($postId);
+    $comments=$commentManager->getPostComments($postId);
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $post=$postManager->getPost($postId);
-    require('view/nav-layout.php');
+    require('controler/nav-controler.php');
     require('view/backend/commentsView.php');
 }
 
@@ -31,7 +31,7 @@ function editcomment($id, $postId){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $post=$postManager->getPost($postId);
     
-    require('view/nav-layout.php');
+    require('controler/nav-controler.php');
     require('view/backend/editCommentView.php');
 }
 

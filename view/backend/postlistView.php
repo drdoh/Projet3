@@ -33,7 +33,7 @@
                       <p class="text-justify"><?=$extrait?>...</p>
                   </div>
 
-                  <div class="col-xl-2 col-lg-12 align-self-center  text-lg-center text-xl-left">
+                  <div class="col-xl-2 col-lg-12 align-self-center  text-sm-center text-xl-left">
                     <div class="d-inline">
                       <a href="index.php?action=editpost&id=<?=$post->id?>">
                         <button class="btn btn-outline-primary">

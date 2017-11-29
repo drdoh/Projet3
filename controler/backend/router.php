@@ -41,7 +41,7 @@ if (isset($_GET['action'])){
         break;
         
         case 'showcomments': 
-            showComments($_GET['id']);
+            showPostComments($_GET['id']);
         break;
         
         case 'editcomment': 

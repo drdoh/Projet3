@@ -25,38 +25,41 @@ class CommentManager extends DBManager{
 
     public function getLastComments($postId)
     {
-        $req = $this->_db->prepare('  SELECT * /*DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
+        $req = $this->_db->prepare('SELECT * /*DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
                                     FROM comments 
-                                    WHERE post_id = ? 
+                                    WHERE post_id = ? AND published = 1
                                     ORDER BY comment_date 
                                     DESC LIMIT 0, 7
                                     ');
+
         $req->execute(array($postId));
         $datas = $req->fetchAll(PDO::FETCH_OBJ);
         $req->closeCursor();
         return $datas;
     }
 
-    public function getAll()
+    public function getAllComments()
     {
         $req = $this->_db->query('  SELECT *
                                     FROM comments 
                                     ORDER BY comment_date 
                                     ');
         $datas = $req->fetchAll(PDO::FETCH_OBJ);
+        $req->closeCursor();
         return $datas;
     }
 
-    public function getAllComments($postId)
+    public function getPostComments($postId)
     {
-        $comments = $this->_db->prepare('  SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
+        $req = $this->_db->prepare('  SELECT id, author, comment, alert, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     WHERE post_id = ? 
                                     ORDER BY comment_date 
                                     ');
-        $comments->execute(array($postId));
-    
-        return $comments;
+        $req->execute(array($postId));
+        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+        $req->closeCursor();
+        return $datas;
     }
 
     public function getComment($commentId)
