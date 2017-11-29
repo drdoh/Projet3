@@ -51,7 +51,7 @@
                       </a>
                     </div>
                     <div class="d-inline">
-                      <a href="index.php?action=showcomments&id=<?=$post->id?>">
+                      <a href="index.php?action=showpostcomments&id=<?=$post->id?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                           Commentaires

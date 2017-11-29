@@ -40,8 +40,7 @@ if (isset($_GET['action'])){
             indexComments();
         break;
 
-        case 'listcomment':
-            
+        case 'listcomment':    
             allComments();
         break;
 
@@ -52,14 +51,16 @@ if (isset($_GET['action'])){
         case 'listrejectedcomment':
             showRejectedComments();
         break;
+
         case 'listalertcomment':
             showAlertComments();
         break;
+
         case 'liststandbycomment':
             showStandbyComments();
         break;
         
-        case 'showcomments': 
+        case 'showpostcomments': 
             showPostComments($_GET['id']);
         break;
         

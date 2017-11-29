@@ -96,6 +96,16 @@ class CommentManager extends DBManager{
         ));
     }
 
+    public function deletePostComment($postId)
+    {
+        $req = $this->_db->prepare('   DELETE FROM comments 
+                                WHERE post_id = :post_id                                  
+                                ');
+        $req->execute(array(
+            'post_id'=>$postId
+        ));
+    }
+
     public function alertComment($commentId)
     {
         $req = $this->_db->prepare('   UPDATE comments 

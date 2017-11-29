@@ -60,6 +60,8 @@ function addPost($title,$content,$chapter,$imgFiles){
 function deletePost($id,$chapter){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $postManager->deletePost($id);
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $commentManager->deletePostComment($id);
     if(file_exists('web/img/portfolio/thumbnails/'.$chapter.'.jpg')){
         unlink('web/img/portfolio/thumbnails/'.$chapter.'.jpg');   
     }

@@ -27,21 +27,37 @@
                         <div class="col-2 align-self-center">
                             <?=$html?>
                         </div>
-                        <div class="col-2 align-self-center">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 d-flex justify-content-end">
                             <div>
-                                <a href="index.php?action=editcomment&id=<?=$comment->id?>&postid=<?=$_GET['id']?>">
-                                    <button class="btn btn-outline-primary">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <a href="index.php?action=acceptcomment&id=<?=$comment->id?>&page=<?= $_GET['action']?>">
+                                    <button class="btn btn-success btn-sm ml-1">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                    Accepter
+                                    </button>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="index.php?action=editcomment&id=<?= $comment->id ?>&postid=<?= $comment->post_id ?>&page=<?= $_GET['action']?>">
+                                    <button class="btn btn-primary btn-sm ml-1">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     Modifier
                                     </button>
                                 </a>
                             </div>
-                        </div>
-
-                        <div class="col-2 align-self-center">
                             <div>
-                                <a href="index.php?action=deletecomment&id=<?=$comment->id?>&postid=<?=$_GET['id']?>">
-                                    <button class="btn btn-outline-primary">
+                                <a href="index.php?action=rejectcomment&id=<?= $comment->id ?>&page=<?= $_GET['action']?>">
+                                    <button class="btn btn-warning btn-sm ml-1">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                    Rejeter
+                                    </button>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="index.php?action=deletecomment&id=<?= $comment->id ?>&postid=<?= $comment->post_id ?>&page=<?= $_GET['action']?>">
+                                    <button class="btn btn-danger btn-sm ml-1">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                     Supprimer
                                     </button>
