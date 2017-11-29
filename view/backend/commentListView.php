@@ -4,23 +4,23 @@ ob_start();
 
 <div class="container">
   <br>
-  <h1 class="text-center"> LISTE DES COMMENTAIRES </h1>
+  <h1 class="text-center"> <?= $title?> </h1>
   <br>
   <div class="row">
                   <div class="col-sm-12 d-flex justify-content-around">
                     <div>
-                      <a href="#">
-                        <button class="btn btn-outline-success btn-sm ml-1">
-                          <i class="fa fa-check" aria-hidden="true"></i>
-                          Tout Accepter
+                      <a href="index.php?action=indexcomment">
+                        <button class="btn btn-outline-primary btn-sm ml-1">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                          Retour
                         </button>
                       </a>
                     </div>
                     <div>
                       <a href="#">
-                        <button class="btn btn-outline-primary btn-sm ml-1">
-                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          Tout Modifier
+                        <button class="btn btn-outline-success btn-sm ml-1">
+                          <i class="fa fa-check" aria-hidden="true"></i>
+                          Tout Accepter
                         </button>
                       </a>
                     </div>
@@ -50,7 +50,6 @@ ob_start();
 
           <?php
           foreach ($datas as $comment) {
-           // var_dump( $comment);
             
             switch($comment){
               case $comment->alert != 0:
@@ -79,7 +78,7 @@ ob_start();
                   </div>
           
                   <div class="col-sm-10">
-                      <h3> <?=$comment->author?> </h3><em>le <?= $comment->comment_date ?></em>
+                      <h3> <?=$comment->author?> </h3><em>le <?=$comment->comment_date ?></em>
                       <p><?=$comment->comment?></p>
                   </div>
 
@@ -88,7 +87,7 @@ ob_start();
               <div class="row">
                   <div class="col-sm-12 d-flex justify-content-end">
                     <div>
-                      <a href="#">
+                      <a href="index.php?action=acceptcomment&id=<?=$comment->id?>&page=<?= $_GET['action']?>">
                         <button class="btn btn-success btn-sm ml-1">
                           <i class="fa fa-check" aria-hidden="true"></i>
                           Accepter
@@ -96,7 +95,7 @@ ob_start();
                       </a>
                     </div>
                     <div>
-                      <a href="#">
+                      <a href="index.php?action=editcomment&id=<?= $comment->id ?>&postid=<?= $comment->post_id ?>&page=<?= $_GET['action']?>">
                         <button class="btn btn-primary btn-sm ml-1">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           Modifier
@@ -104,7 +103,7 @@ ob_start();
                       </a>
                     </div>
                     <div>
-                      <a href="#">
+                      <a href="index.php?action=rejectcomment&id=<?= $comment->id ?>&page=<?= $_GET['action']?>">
                         <button class="btn btn-warning btn-sm ml-1">
                           <i class="fa fa-times" aria-hidden="true"></i>
                           Rejeter
@@ -113,7 +112,7 @@ ob_start();
                     </div>
 
                     <div>
-                      <a href="#">
+                      <a href="index.php?action=deletecomment&id=<?= $comment->id ?>&postid=<?= $comment->post_id ?>&page=<?= $_GET['action']?>">
                         <button class="btn btn-danger btn-sm ml-1">
                           <i class="fa fa-trash" aria-hidden="true"></i>
                           Supprimer

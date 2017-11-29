@@ -106,5 +106,133 @@ class CommentManager extends DBManager{
             'id'=>$commentId
         ));
     }
-    
+
+// a simplifier ...
+    public function countComments()
+    {
+        
+        $req = $this->_db->query('  SELECT COUNT(*) AS nbcomment
+                                    FROM comments 
+                                    ');
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+
+        
+    }
+
+    public function countRejectedComments()
+    {
+        $req = $this->_db->query('  SELECT COUNT(rejected) AS nb_rejected_comment
+                                    FROM comments 
+                                    WHERE rejected = TRUE
+                                    ');
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+    }
+
+    public function countAlertComments()
+    {
+        $req = $this->_db->query('  SELECT COUNT(alert) AS nb_alert_comment
+                                    FROM comments 
+                                    WHERE alert >= 1
+                                    ');
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+    }
+
+    public function countStandByComments()
+    {
+        $req = $this->_db->query('  SELECT COUNT(stand_by) AS nb_stand_by_comment
+                                    FROM comments 
+                                    WHERE stand_by = TRUE
+                                    ');
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+    }
+
+    public function countPublishedComments()
+    {
+        $req = $this->_db->query('  SELECT COUNT(published) AS nb_published_comment
+                                    FROM comments 
+                                    WHERE published = TRUE
+                                    ');
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+    }
+
+
+        public function getPublishedComments()
+        {
+            $req = $this->_db->query('  SELECT *
+                                        FROM comments 
+                                        WHERE  published = TRUE
+                                        ');
+            $datas = $req->fetchAll(PDO::FETCH_OBJ);
+            
+            $req->closeCursor();
+            return $datas;
+        }
+
+        public function getRejectedComments()
+        {
+            $req = $this->_db->query('  SELECT *
+                                        FROM comments 
+                                        WHERE  rejected = TRUE
+                                        ');
+            $datas = $req->fetchAll(PDO::FETCH_OBJ);
+            
+            $req->closeCursor();
+            return $datas;
+        }
+
+        public function getAlertComments()
+        {
+            $req = $this->_db->query('  SELECT *
+                                        FROM comments 
+                                        WHERE  Alert >= 1
+                                        ');
+            $datas = $req->fetchAll(PDO::FETCH_OBJ);
+            
+            $req->closeCursor();
+            return $datas;
+        }
+
+        public function getStandByComments()
+        {
+            $req = $this->_db->query('  SELECT *
+                                        FROM comments 
+                                        WHERE stand_by = TRUE
+                                        ');
+            $datas = $req->fetchAll(PDO::FETCH_OBJ);
+            
+            $req->closeCursor();
+            return $datas;
+        }
+
+        public function acceptComment($commentId)
+        {
+            $req = $this->_db->prepare('   UPDATE comments 
+                                    SET published= 1, stand_by= 0,rejected= 0, alert=0
+                                    WHERE id = :id                                    
+                                        ');
+            $req->execute(array(
+                'id'=>$commentId
+            ));
+        }
+
+        public function rejetComment($commentId)
+        {
+            $req = $this->_db->prepare('   UPDATE comments 
+                                    SET rejected= 1, stand_by= 0, published= 0
+                                    WHERE id = :id                                    
+                                        ');
+            $req->execute(array(
+                'id'=>$commentId
+            ));
+        }
 }

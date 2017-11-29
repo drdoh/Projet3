@@ -4,14 +4,54 @@ Autoloader::register();
 
 /* \\\\\\\\\\\::: COMMENTS CONTROLER ::::///////////: */
 function indexComments(){
-    //$commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    //$datas = $commentManager->getAllComments();
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $nbComments = $commentManager->countComments();
+    $nbRejectedComments = $commentManager->countRejectedComments();
+    $nbAlertComments = $commentManager->countAlertComments();
+    $nbStandByComments = $commentManager->countStandByComments();
+    $nbPublishedComments = $commentManager->countPublishedComments();
+    $tab = array_replace_recursive($nbComments,$nbRejectedComments,$nbAlertComments,$nbStandByComments,$nbPublishedComments);
+   
     require('controler/nav-controler.php');
     require('view/backend/commentIndexView.php');
 }
+
 function allComments(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $datas = $commentManager->getAllComments();
+    $title="Tout les commentaires";
+    require('controler/nav-controler.php');
+    require('view/backend/commentListView.php');
+}
+
+function showPublishedComments(){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $datas = $commentManager->getPublishedComments();
+    $title="Commentaires publiés";
+    require('controler/nav-controler.php');
+    require('view/backend/commentListView.php');
+}
+
+function showRejectedComments(){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $datas = $commentManager->getRejectedComments();
+    $title="Commentaires Rejetés";
+    require('controler/nav-controler.php');
+    require('view/backend/commentListView.php');
+}
+
+function showAlertComments(){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $datas = $commentManager->getAlertComments();
+    $title="Commentaires signalés";
+    require('controler/nav-controler.php');
+    require('view/backend/commentListView.php');
+}
+
+function showStandbyComments(){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $datas = $commentManager->getStandByComments();
+    $title="Commentaires en attente de validation";
     require('controler/nav-controler.php');
     require('view/backend/commentListView.php');
 }
@@ -28,7 +68,7 @@ function showPostComments($postId){
 function deletecomment($id, $postId){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $commentManager->deleteComment($id);   
-    header('Location: index.php?action=showcomments&id='.$postId);
+    header('Location: index.php?action='.$_GET['page']);
 }
 
 function editcomment($id, $postId){
@@ -39,6 +79,16 @@ function editcomment($id, $postId){
     
     require('controler/nav-controler.php');
     require('view/backend/editCommentView.php');
+}
+function acceptComment($id){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $comment=$commentManager->acceptComment($id);
+    header('Location: index.php?action='.$_GET['page']);
+}
+function rejectComment($id){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $comment=$commentManager->rejetComment($id);
+    header('Location: index.php?action='.$_GET['page']);
 }
 
 function saveComment($commentId,$author,$comment,$postId){

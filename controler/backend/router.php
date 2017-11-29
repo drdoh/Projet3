@@ -41,7 +41,22 @@ if (isset($_GET['action'])){
         break;
 
         case 'listcomment':
+            
             allComments();
+        break;
+
+        case 'listpublishedcomment':
+            showPublishedComments();
+        break;
+
+        case 'listrejectedcomment':
+            showRejectedComments();
+        break;
+        case 'listalertcomment':
+            showAlertComments();
+        break;
+        case 'liststandbycomment':
+            showStandbyComments();
         break;
         
         case 'showcomments': 
@@ -50,6 +65,14 @@ if (isset($_GET['action'])){
         
         case 'editcomment': 
             editComment($_GET['id'],$_GET['postid']);
+        break;
+
+        case 'acceptcomment': 
+            acceptComment($_GET['id']);
+        break;
+        
+        case 'rejectcomment': 
+            rejectComment($_GET['id']);
         break;
         
         case 'deletecomment': 

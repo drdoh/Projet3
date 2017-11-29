@@ -6,44 +6,7 @@ ob_start();
   <br>
   <h1 class="text-center"> INDEX DES COMMENTAIRES </h1>
   <br>
-  <div class="row">
-                  <div class="col-sm-12 d-flex justify-content-around">
-                    <div>
-                      <a href="#">
-                        <button class="btn btn-outline-success btn-sm ml-1">
-                          <i class="fa fa-check" aria-hidden="true"></i>
-                          Tout Accepter
-                        </button>
-                      </a>
-                    </div>
-                    <div>
-                      <a href="#">
-                        <button class="btn btn-outline-primary btn-sm ml-1">
-                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          Tout Modifier
-                        </button>
-                      </a>
-                    </div>
-                    <div>
-                      <a href="#">
-                        <button class="btn btn-outline-warning btn-sm ml-1">
-                          <i class="fa fa-times" aria-hidden="true"></i>
-                          Tout Rejeter
-                        </button>
-                      </a>
-                    </div>
-
-                    <div>
-                      <a href="#">
-                        <button class="btn btn-outline-danger btn-sm ml-1">
-                          <i class="fa fa-trash" aria-hidden="true"></i>
-                          Tout Supprimer
-                        </button>
-                      </a>
-                    </div>
-                  </div>
-              </div>
-              <br>
+  
    <section class="p-0" id="portfolio">
     <div class="container p-0">
         <ul class="list-group">
@@ -51,24 +14,44 @@ ob_start();
             <li class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex">
                     <div class="p-2">
-                        Voir les commentaires Publiés
+                        Voir tout les commentaires
                     </div>
                     <div class="ml-auto p-2">
-                        <button type="button" class="btn btn-primary btn-sm">
-                            Voir <span class="badge badge-light">4</span>
-                        </button> 
+                        <a href="index.php?action=listcomment">
+                            <button type="button" class="btn btn-primary btn-sm">
+                                    Voir <span class="badge badge-light"><?=$tab[0]['nbcomment']?></span>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </li> 
+
+            <li class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex">
+                    <div class="p-2">
+                        Voir les commentaires publiés
+                    </div>
+                        <div class="ml-auto p-2">
+                            <a href="index.php?action=listpublishedcomment">
+                                <button type="button" class="btn btn-primary btn-sm">
+                                    Voir <span class="badge badge-light"><?=$tab[0]['nb_published_comment']?></span>
+                                </button> 
+                            </a>
+                        </div>
+                </div>
+            </li> 
+
             <li class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex">
                     <div class="p-2">
                         Voir les commentaires Rejetés
                     </div>
                     <div class="ml-auto p-2">
-                        <button type="button" class="btn btn-primary btn-sm">
-                            Voir <span class="badge badge-light">4</span>
-                        </button> 
+                        <a href="index.php?action=listrejectedcomment">
+                            <button type="button" class="btn btn-primary btn-sm">
+                                Voir <span class="badge badge-light"><?=$tab[0]['nb_rejected_comment']?></span>
+                            </button> 
+                        </a>
                     </div>
                 </div>
             </li> 
@@ -79,24 +62,31 @@ ob_start();
                         Voir les commentaires Signalés
                     </div>
                     <div class="ml-auto p-2">
-                        <button type="button" class="btn btn-primary btn-sm">
-                            Voir <span class="badge badge-light">4</span>
-                        </button> 
+                        <a href="index.php?action=listalertcomment">
+                            <button type="button" class="btn btn-primary btn-sm">
+                                Voir <span class="badge badge-light"><?=$tab[0]['nb_alert_comment']?></span>
+                            </button> 
+                        </a>
                     </div>
                 </div>
             </li> 
+
             <li class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex">
                     <div class="p-2">
-                        Voir tout les commentaires
+                        Voir les commentaires en attente de validation
                     </div>
                     <div class="ml-auto p-2">
-                        <button type="button" class="btn btn-primary btn-sm">
-                            Voir <span class="badge badge-light">4</span>
-                        </button> 
+                        <a href="index.php?action=liststandbycomment">
+                            <button type="button" class="btn btn-primary btn-sm">
+                                Voir <span class="badge badge-light"><?=$tab[0]['nb_stand_by_comment']?></span>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </li> 
+
+
 
 
        </ul>
