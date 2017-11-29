@@ -9,6 +9,11 @@ function indexPosts(){
     require('view/backend/postlistView.php');
 }
 
+function newPost(){
+    require('controler/nav-controler.php');
+    require('view/backend/postView.php');
+}
+
 function allPosts(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $datas = $postManager->getAllPosts();
@@ -25,23 +30,12 @@ function editPost($postId){
     require('view/backend/postView.php');
 }
 
-function deletePost($id,$chapter){
-    $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $postManager->deletePost($id);
-    if(file_exists('web/img/portfolio/thumbnails/'.$chapter.'.jpg')){
-        unlink('web/img/portfolio/thumbnails/'.$chapter.'.jpg');   
-    }
-    if(file_exists('web/img/portfolio/fullsize/'.$chapter.'.jpg')){
-        unlink('web/img/portfolio/fullsize/'.$chapter.'.jpg');   
-    }
-    header('Location: index.php');
-}
-
 function updatePost($title,$content,$chapter,$imgFiles){ 
-    if($imgFiles['img']['name']!= ''){
+
+    if($imgFiles['img']['name']!= false){
         $FileManager = new JeanForteroche\Blog\Model\FileManager();
         $FileManager->upload($imgFiles,$chapter);
-    
+        
         $img=pathinfo($imgFiles['img']['name']);
         $imgUrl = 'web/img/portfolio/thumbnails/'.$chapter.'.'.$img['extension'];
     }
@@ -63,7 +57,14 @@ function addPost($title,$content,$chapter,$imgFiles){
     header('Location: index.php');
 }
 
-function newPost(){
-    require('view/nav-layout.php');
-    require('view/backend/postView.php');
+function deletePost($id,$chapter){
+    $postManager = new JeanForteroche\Blog\Model\PostManager();
+    $postManager->deletePost($id);
+    if(file_exists('web/img/portfolio/thumbnails/'.$chapter.'.jpg')){
+        unlink('web/img/portfolio/thumbnails/'.$chapter.'.jpg');   
+    }
+    if(file_exists('web/img/portfolio/fullsize/'.$chapter.'.jpg')){
+        unlink('web/img/portfolio/fullsize/'.$chapter.'.jpg');   
+    }
+    header('Location: index.php');
 }

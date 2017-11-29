@@ -3,8 +3,8 @@
     $value = 'Déconnexion';
     $url = 'index.php?action=disconnexion' ;
     $button1='<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?action=newpost">Nouveau chapitre</a>';
-    $button2='<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?action=indexcomment">Voir les commentaires</a>';
-   //$button3='<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?action=editprofil">Mon profil</a>';
+    $button2='<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php">Voir les chapitres</a>';
+    $button3='<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?action=indexcomment">Voir les commentaires</a>';
     
   }else{
     $value = 'Connexion';

@@ -42,7 +42,7 @@ class CommentManager extends DBManager{
     {
         $req = $this->_db->query('  SELECT *
                                     FROM comments 
-                                    ORDER BY comment_date 
+                                    ORDER BY comment_date DESC
                                     ');
         $datas = $req->fetchAll(PDO::FETCH_OBJ);
         $req->closeCursor();
@@ -54,7 +54,7 @@ class CommentManager extends DBManager{
         $req = $this->_db->prepare('  SELECT id, author, comment, alert, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     WHERE post_id = ? 
-                                    ORDER BY comment_date 
+                                    ORDER BY comment_date DESC
                                     ');
         $req->execute(array($postId));
         $datas = $req->fetchAll(PDO::FETCH_OBJ);
@@ -171,6 +171,7 @@ class CommentManager extends DBManager{
             $req = $this->_db->query('  SELECT *
                                         FROM comments 
                                         WHERE  published = TRUE
+                                        ORDER BY comment_date DESC
                                         ');
             $datas = $req->fetchAll(PDO::FETCH_OBJ);
             
@@ -183,6 +184,7 @@ class CommentManager extends DBManager{
             $req = $this->_db->query('  SELECT *
                                         FROM comments 
                                         WHERE  rejected = TRUE
+                                        ORDER BY comment_date DESC
                                         ');
             $datas = $req->fetchAll(PDO::FETCH_OBJ);
             
@@ -195,6 +197,7 @@ class CommentManager extends DBManager{
             $req = $this->_db->query('  SELECT *
                                         FROM comments 
                                         WHERE  Alert >= 1
+                                        ORDER BY comment_date DESC
                                         ');
             $datas = $req->fetchAll(PDO::FETCH_OBJ);
             
@@ -207,6 +210,7 @@ class CommentManager extends DBManager{
             $req = $this->_db->query('  SELECT *
                                         FROM comments 
                                         WHERE stand_by = TRUE
+                                        ORDER BY comment_date DESC
                                         ');
             $datas = $req->fetchAll(PDO::FETCH_OBJ);
             

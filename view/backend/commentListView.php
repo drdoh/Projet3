@@ -11,7 +11,7 @@ ob_start();
                     <div>
                       <a href="index.php?action=indexcomment">
                         <button class="btn btn-outline-primary btn-sm ml-1">
-                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                          <i class="fa fa-home" aria-hidden="true"></i>
                           Retour
                         </button>
                       </a>

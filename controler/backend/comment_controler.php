@@ -80,11 +80,13 @@ function editcomment($id, $postId){
     require('controler/nav-controler.php');
     require('view/backend/editCommentView.php');
 }
+
 function acceptComment($id){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $comment=$commentManager->acceptComment($id);
     header('Location: index.php?action='.$_GET['page']);
 }
+
 function rejectComment($id){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $comment=$commentManager->rejetComment($id);

@@ -14,7 +14,7 @@ function addComment($postId, $author, $comment){
         else{
             // Votre commentaire a bien ete envoyer
             
-            //header('Location: index.php?action=post&id='.$postId);
+            header('Location: index.php?action=post&id='.$postId);
         }
     }
     
