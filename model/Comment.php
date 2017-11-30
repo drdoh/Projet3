@@ -6,17 +6,22 @@ use Exception;
 class Comment {
 
     private $_id;
-    private $_postId;
+    private $_post_id;
     private $_author;
     private $_comment;
-    private $_commentDate;
+    private $_comment_date;
     private $_alert;
+    private $_stand_by;
+    private $_published;
+    private $_rejected;
 
+
+/* \\\\\\\\\\\::: CONSTRUCT ::::///////////: */
     public function __construct(array $datas){
         self::hydrate($datas);
     }
 
-
+/* \\\\\\\\\\\::: HYDRATE ::::///////////: */
     public function hydrate(array $datas){
         
         foreach($datas as $key => $value){
@@ -27,7 +32,9 @@ class Comment {
             }
         }
     }
-    // SETTER
+
+/* \\\\\\\\\\\::: SETTER ::::///////////: */
+
     public function setId($id){
         if(!is_numeric($id)){
             throw new Exception('Erreur : l\'id utilisé n\'est pas un entier');
@@ -93,14 +100,54 @@ class Comment {
         
         $this->_alert = $alert ;
     }
+
+    public function setStand_by($stand_by){
+        if(!is_numeric($stand_by)){
+            throw new Exception('Erreur : la valeur utilisé n\'est pas un entier');
+            return;
+        }
+        if($stand_by<0){
+            throw new Exception('Erreur : la valeur utilisé doit etre positif');
+            return;
+        }
+        
+        $this->_stand_by = $stand_by ;
+    }
+
+    public function setPublished($published){
+        if(!is_numeric($published)){
+            throw new Exception('Erreur : la valeur utilisé n\'est pas un entier');
+            return;
+        }
+        if($published<0){
+            throw new Exception('Erreur : la valeur utilisé doit etre positif');
+            return;
+        }
+        
+        $this->_published = $published ;
+    }
+
+    public function setRejected($rejected){
+        if(!is_numeric($rejected)){
+            throw new Exception('Erreur : la valeur utilisé n\'est pas un entier');
+            return;
+        }
+        if($rejected<0){
+            throw new Exception('Erreur : la valeur utilisé doit etre positif');
+            return;
+        }
+        
+        $this->_rejected = $rejected ;
+    }
     
 
-    // GETTER
+/* \\\\\\\\\\\::: GETTER ::::///////////: */
+
     public function id(){
         return $this->_id;
     }
-    public function postId(){
-        return $this->_postId;
+    public function post_id(){
+        return $this->_post_id;
     }
     public function author(){
         return $this->_author;
@@ -108,11 +155,20 @@ class Comment {
     public function comment(){
         return $this->_comment ;
     }
-    public function commentDate(){
-        return $this->_commentDate;
+    public function comment_date(){
+        return $this->_comment_date;
     }
     public function alert(){
         return $this->_alert;
+    }
+    public function stand_by(){
+        return $this->_stand_by;
+    }
+    public function published(){
+        return $this->_published;
+    }
+    public function rejected(){
+        return $this->_rejected;
     }
 
 }

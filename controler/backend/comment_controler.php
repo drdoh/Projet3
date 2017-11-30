@@ -3,6 +3,7 @@ require_once('model/Autoloader.php');
 Autoloader::register();
 
 /* \\\\\\\\\\\::: COMMENTS CONTROLER ::::///////////: */
+
 function indexComments(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $nbComments = $commentManager->countComments();
@@ -18,48 +19,24 @@ function indexComments(){
 
 function allComments(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $datas = $commentManager->getAllComments();
+    $comments = $commentManager->getAllComments();
     $title="Tout les commentaires";
-    require('controler/nav-controler.php');
-    require('view/backend/commentListView.php');
-}
-
-function showPublishedComments(){
-    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $datas = $commentManager->getPublishedComments();
-    $title="Commentaires publiés";
-    require('controler/nav-controler.php');
-    require('view/backend/commentListView.php');
-}
-
-function showRejectedComments(){
-    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $datas = $commentManager->getRejectedComments();
-    $title="Commentaires Rejetés";
     require('controler/nav-controler.php');
     require('view/backend/commentListView.php');
 }
 
 function showAlertComments(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $datas = $commentManager->getAlertComments();
+    $comments = $commentManager->getAlertComments();
     $title="Commentaires signalés";
-    require('controler/nav-controler.php');
-    require('view/backend/commentListView.php');
-}
-
-function showStandbyComments(){
-    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $datas = $commentManager->getStandByComments();
-    $title="Commentaires en attente de validation";
     require('controler/nav-controler.php');
     require('view/backend/commentListView.php');
 }
 
 function showFilteredComments($filter){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $datas = $commentManager->getFilteredComments($filter);
-    //SWITCH
+    $comments = $commentManager->getFilteredComments($filter);
+    
     switch($filter){
         case 'published':
         $title="Commentaires publiés";
@@ -115,8 +92,8 @@ function rejectComment($id){
     header('Location: index.php?action='.$_GET['page']);
 }
 
-function saveComment($commentId,$author,$comment,$postId){
+function updateComment($commentId,$author,$comment,$postId){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $commentManager->saveComment($commentId,$author,$comment);   
+    $commentManager->updateComment($commentId,$author,$comment);   
     header('Location: http://localhost/Projet3/index.php?action=editcomment&id='.$commentId.'&postid='.$postId.'');
 }

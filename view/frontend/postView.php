@@ -25,12 +25,12 @@
         <h2>Commentaires</h2>
 
         <?php
-        foreach($datas as $comment){
+        foreach($comments as $comment){
         ?>
             <div class="p-2 border  border-warning rounded">
-                <p ><strong><?= $comment->author ?></strong> le <?= $comment->comment_date ?> <em>(<a href="index.php?action=alertComment&id=<?=$post->id()?>&commentId=<?=$comment->id?>">Signalé</a>)</em></p>
+                <p ><strong><?= $comment->author() ?></strong> le <?= $comment->commentDate() ?> <em>(<a href="index.php?action=alertComment&id=<?=$post->id()?>&commentId=<?=$comment->id()?>">Signalé</a>)</em></p>
                 <hr class="light">
-                <p><?= nl2br($comment->comment) ?> </p>
+                <p><?= nl2br($comment->comment()) ?> </p>
                
             </div>
             <br>

@@ -18,7 +18,7 @@ function post(){
 
     // Gestion des commentaire
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $datas = $commentManager->getLastComments($_GET['id']);
+    $comments = $commentManager->getLastComments($_GET['id']);
     
     // Gestion de la vue
     require('controler/nav-controler.php');

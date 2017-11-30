@@ -52,14 +52,14 @@ if (isset($_GET['action'])){
             showFilteredComments('rejected');
         break;
 
-        case 'listalertcomment':
-            showAlertComments();
-        break;
-
         case 'liststandbycomment':
             showFilteredComments('stand_by');
         break;
-        
+
+        case 'listalertcomment':
+            showAlertComments();
+        break;
+ 
         case 'showpostcomments': 
             showPostComments($_GET['id']);
         break;
@@ -80,8 +80,8 @@ if (isset($_GET['action'])){
             deleteComment($_GET['id'],$_GET['postid']);
         break;
 
-        case "savecomment" : 
-            savecomment($_GET['id'], $_POST['author'],$_POST['comment'],$_GET['postid']);
+        case "updateComment" : 
+            updateComment($_GET['id'], $_POST['author'],$_POST['comment'],$_GET['postid']);
         break;
 
         default: 

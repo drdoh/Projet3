@@ -49,19 +49,19 @@ ob_start();
         <ul class="list-group">
 
           <?php
-          foreach ($datas as $comment) {
+          foreach ($comments as $comment) {
             
             switch($comment){
-              case $comment->alert != 0:
-                $status='<span class="badge badge-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Signalement : '.$comment->alert.'</span>';
+              case $comment->alert() != 0:
+                $status='<span class="badge badge-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Signalement : '.$comment->alert().'</span>';
                 break;
-              case $comment->stand_by != 0:
+              case $comment->stand_by() != 0:
                 $status='<span class="badge badge-info"><i class="fa fa-info-circle" aria-hidden="true"></i> En attente </span>';
                 break;
-              case $comment->published != 0:
+              case $comment->published() != 0:
                 $status='<span class="badge badge-success"><i class="fa fa-check" aria-hidden="true"></i> Publié </span>';
                 break;
-              case $comment->rejected != 0:
+              case $comment->rejected() != 0:
                 $status='<span class="badge badge-danger"><i class="fa fa-times" aria-hidden="true"></i> Rejeté</span>';
                 break;
 
@@ -78,8 +78,8 @@ ob_start();
                   </div>
           
                   <div class="col-sm-10">
-                      <h3> <?=$comment->author?> </h3><em>le <?=$comment->comment_date ?></em>
-                      <p><?=$comment->comment?></p>
+                      <h3> <?=$comment->author()?> </h3><em>le <?=$comment->comment_date() ?></em>
+                      <p><?=$comment->comment()?></p>
                   </div>
 
               </div>
@@ -87,7 +87,7 @@ ob_start();
               <div class="row">
                   <div class="col-sm-12 d-flex justify-content-end">
                     <div>
-                      <a href="index.php?action=acceptcomment&id=<?=$comment->id?>&page=<?= $_GET['action']?>">
+                      <a href="index.php?action=acceptcomment&id=<?=$comment->id()?>&page=<?= $_GET['action']?>">
                         <button class="btn btn-success btn-sm ml-1">
                           <i class="fa fa-check" aria-hidden="true"></i>
                           Accepter
@@ -95,7 +95,7 @@ ob_start();
                       </a>
                     </div>
                     <div>
-                      <a href="index.php?action=editcomment&id=<?= $comment->id ?>&postid=<?= $comment->post_id ?>&page=<?= $_GET['action']?>">
+                      <a href="index.php?action=editcomment&id=<?= $comment->id() ?>&postid=<?= $comment->post_id() ?>&page=<?= $_GET['action']?>">
                         <button class="btn btn-primary btn-sm ml-1">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           Modifier
@@ -103,7 +103,7 @@ ob_start();
                       </a>
                     </div>
                     <div>
-                      <a href="index.php?action=rejectcomment&id=<?= $comment->id ?>&page=<?= $_GET['action']?>">
+                      <a href="index.php?action=rejectcomment&id=<?= $comment->id() ?>&page=<?= $_GET['action']?>">
                         <button class="btn btn-warning btn-sm ml-1">
                           <i class="fa fa-times" aria-hidden="true"></i>
                           Rejeter
@@ -112,7 +112,7 @@ ob_start();
                     </div>
 
                     <div>
-                      <a href="index.php?action=deletecomment&id=<?= $comment->id ?>&postid=<?= $comment->post_id ?>&page=<?= $_GET['action']?>">
+                      <a href="index.php?action=deletecomment&id=<?= $comment->id() ?>&postid=<?= $comment->post_id() ?>&page=<?= $_GET['action']?>">
                         <button class="btn btn-danger btn-sm ml-1">
                           <i class="fa fa-trash" aria-hidden="true"></i>
                           Supprimer

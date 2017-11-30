@@ -6,7 +6,7 @@
 
             <h2>Commentaires de <strong><?=$comment['author']?></strong> pour l'article : <?=$post['title']?></h2>
 
-            <form method="post" action="index.php?action=savecomment&amp;id=<?=$comment['id']?>&amp;postid=<?=$post['id']?>">
+            <form method="post" action="index.php?action=updateComment&amp;id=<?=$comment['id']?>&amp;postid=<?=$post['id']?>">
             <p>
                 <Label for="author"><strong>Modifier le nom</strong></Label></br>
                 <input type="text" id="author" name="author" value="<?=$comment['author']?>">
