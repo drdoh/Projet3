@@ -10,20 +10,28 @@ class DBManager{
     private $password='root';
     protected $_db;
 
+/* \\\\\\\\\\\::: PDO OBJ ::::///////////: */
+
     protected function dbConnect()
     {
             $db = new PDO('mysql:host='.$this->host.';dbname='.$this->dbname.';charset=utf8', ''.$this->name.'', ''.$this->password.'', array(PDO::ATTR_ERRMODE => PDO:: ERRMODE_EXCEPTION));
             return $db;
     }
 
+/* \\\\\\\\\\\::: CONSTRUCT ::::///////////: */
+
     public function __construct(){
         $db = $this->dbConnect();
         $this->setDb($db);
     }
 
+/* \\\\\\\\\\\::: SETTER ::::///////////: */
+
     public function setDb($db){
         $this->_db = $db;
     }
+
+/* \\\\\\\\\\\::: GETTER ::::///////////: */
 
     public function db(){
         return $this->_db;

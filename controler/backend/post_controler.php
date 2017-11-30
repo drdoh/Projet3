@@ -22,6 +22,7 @@ function allPosts(){
 }
 
 function editPost($postId){
+    // VERIF 
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $post=$postManager->getPost($postId);
     
@@ -44,7 +45,7 @@ function updatePost($title,$content,$chapter,$imgFiles){
 }
 
 function addPost($title,$content,$chapter,$imgFiles){
-    
+    // VERIF 
     $FileManager = new JeanForteroche\Blog\Model\FileManager();
     $FileManager->upload($imgFiles,$chapter);
     
@@ -57,6 +58,7 @@ function addPost($title,$content,$chapter,$imgFiles){
 }
 
 function deletePost($id,$chapter){
+    // VERIF 
     $postManager = new JeanForteroche\Blog\Model\PostManager();
     $postManager->deletePost($id);
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();

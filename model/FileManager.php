@@ -5,6 +5,8 @@ require_once('model/Manager.php');
 
 class FileManager {
 
+/* \\\\\\\\\\\::: UPLOAD IMG ::::///////////: */
+
     public function upload($imgFiles,$chapter)
     {
         if(isset($imgFiles['img']) AND $imgFiles['img']['error']== 0){
@@ -23,7 +25,9 @@ class FileManager {
                 }
             }
         }
-    }  
+    } 
+    
+/* \\\\\\\\\\\::: RESIZE IMG ::::///////////: */
     public function resize($imgFiles,$chapter,$extention_upload)
     {
         $filename = $imgFiles['img']['tmp_name'];
