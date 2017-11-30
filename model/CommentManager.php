@@ -142,40 +142,7 @@ class CommentManager extends DBManager{
         return $datas;
     }
 
-    // public function countRejectedComments()
-    // {
-    //     $req = $this->_db->query('  SELECT COUNT(rejected) AS nb_rejected_comment
-    //                                 FROM comments 
-    //                                 WHERE rejected = TRUE
-    //                                 ');
-    //     $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-    //     $req->closeCursor();
-    //     return $datas;
-    // }
-
-    // public function countStandByComments()
-    // {
-    //     $req = $this->_db->query('  SELECT COUNT(stand_by) AS nb_stand_by_comment
-    //                                 FROM comments 
-    //                                 WHERE stand_by = TRUE
-    //                                 ');
-    //     $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-    //     $req->closeCursor();
-    //     return $datas;
-    // }
-
-    // public function countPublishedComments()
-    // {
-    //     $req = $this->_db->query('  SELECT COUNT(published) AS nb_published_comment
-    //                                 FROM comments 
-    //                                 WHERE published = TRUE
-    //                                 ');
-    //     $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-    //     $req->closeCursor();
-    //     return $datas;
-    // }
-
-    public function countFilteredComments($filter)
+     public function countFilteredComments($filter)
     {
         $req = $this->_db->query('  SELECT COUNT('.$filter.') AS nb_'.$filter.'_comment
                                     FROM comments 

@@ -23,8 +23,7 @@ function allPosts(){
 
 function editPost($postId){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $datas=$postManager->getPost($postId);
-    $post = new JeanForteroche\Blog\Model\Post($datas);
+    $post=$postManager->getPost($postId);
     
     require('controler/nav-controler.php');
     require('view/backend/postView.php');

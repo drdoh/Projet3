@@ -6,10 +6,10 @@ Autoloader::register();
 function indexComments(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $nbComments = $commentManager->countComments();
-    $nbRejectedComments = $commentManager->countRejectedComments();
     $nbAlertComments = $commentManager->countAlertComments();
-    $nbStandByComments = $commentManager->countStandByComments();
-    $nbPublishedComments = $commentManager->countPublishedComments();
+    $nbRejectedComments = $commentManager->countFilteredComments('rejected');
+    $nbStandByComments = $commentManager->countFilteredComments('stand_by');
+    $nbPublishedComments = $commentManager->countFilteredComments('published');
     $tab = array_replace_recursive($nbComments,$nbRejectedComments,$nbAlertComments,$nbStandByComments,$nbPublishedComments);
    
     require('controler/nav-controler.php');
