@@ -85,6 +85,24 @@ if (isset($_GET['action'])){
             updateComment($_GET['id'], $_POST['author'],$_POST['comment'],$_GET['postid']);
         break;
 
+        case "acceptselectedcomments" : 
+            foreach($comments as $comment){
+                echo 'coucou';
+            }
+        break;
+
+        case "rejecteselectedcomments" : 
+            foreach($comments as $comment){
+                echo 'coucou';
+            }
+        break;
+        
+        case "deleteselectedcomments" : 
+            foreach($comments as $comment){
+                echo 'coucou';
+            }
+        break;
+
         default: 
             allPosts();
     }

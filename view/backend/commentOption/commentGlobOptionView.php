@@ -1,5 +1,8 @@
 <?php
 ob_start();
+foreach($comments as $comment){
+    var_dump($comment);
+}
 ?>
     <div class="col-sm-12 d-flex justify-content-around">
         <div>
@@ -11,7 +14,7 @@ ob_start();
             </a>
         </div>
         <div>
-            <a href="index.php?action=acceptcomment">
+            <a href="index.php?action=acceptselectedcomments">
                 <button class="btn btn-outline-success btn-sm ml-1">
                 <i class="fa fa-check" aria-hidden="true"></i>
                 Tout Accepter
@@ -19,7 +22,7 @@ ob_start();
             </a>
         </div>
         <div>
-            <a href="#">
+            <a href="index.php?action=rejecteselectedcomments">
                 <button class="btn btn-outline-warning btn-sm ml-1">
                 <i class="fa fa-times" aria-hidden="true"></i>
                 Tout Rejeter
@@ -27,7 +30,7 @@ ob_start();
             </a>
         </div>
         <div>
-            <a href="#">
+            <a href="index.php?action=deleteselectedcomments">
                 <button class="btn btn-outline-danger btn-sm ml-1">
                 <i class="fa fa-trash" aria-hidden="true"></i>
                 Tout Supprimer
