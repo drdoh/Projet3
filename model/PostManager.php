@@ -7,10 +7,12 @@ require_once('model/Manager.php');
 require_once('model/Post.php');
 
 class PostManager extends DBManager{
-    
+
+/* \\\\\\\\\\\::: READ ::::///////////: */
+
     public function getAllPosts()
     {
-        $req = $this->_db->query(' SELECT id, title, content, chapter,img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
+        $req = $this->db()->query(' SELECT id, title, content, chapter,img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
                             FROM posts 
                             ORDER BY id 
                             ');
@@ -25,7 +27,7 @@ class PostManager extends DBManager{
 
     public function getLastPosts()
     {
-        $req = $this->_db->query(' SELECT id, title, content, chapter, img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
+        $req = $this->db()->query(' SELECT id, title, content, chapter, img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
                             FROM posts 
                             ORDER BY id 
                             DESC LIMIT 0, 6
@@ -42,7 +44,7 @@ class PostManager extends DBManager{
     public function getPost($postId)
     {
 
-        $req = $this->_db->prepare('SELECT */*id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr*/
+        $req = $this->db()->prepare('SELECT */*id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr*/
                                     FROM posts 
                                     WHERE id = ?
                                     ');
@@ -55,9 +57,11 @@ class PostManager extends DBManager{
         return $post;
     }
 
+/* \\\\\\\\\\\::: UPDATE  ::::///////////: */
+
     public function updatePost($title,$content,$id)
     {
-        $req = $this->_db->prepare('UPDATE posts 
+        $req = $this->db()->prepare('UPDATE posts 
                                     SET content= :newcontent, title= :newtitle
                                     WHERE id = :id                                    
                                 ');
@@ -69,11 +73,12 @@ class PostManager extends DBManager{
         ));
         $req->closeCursor();
     }
+/* \\\\\\\\\\\::: CREATE  ::::///////////: */
 
     public function addPost($title,$content,$chapter, $img)
     {
 
-        $req = $this->_db->prepare('   INSERT INTO posts(title, content, chapter, img) 
+        $req = $this->db()->prepare('   INSERT INTO posts(title, content, chapter, img) 
                                 VALUES (:title,:content, :chapter, :img)                                  
                                 ');
         $req->execute(array(
@@ -84,11 +89,13 @@ class PostManager extends DBManager{
         ));
         $req->closeCursor();
     }
-    
+
+/* \\\\\\\\\\\::: DELETE  ::::///////////: */
+
     public function deletePost($id)
     {
 
-        $req = $this->_db->prepare('   DELETE FROM posts 
+        $req = $this->db()->prepare('   DELETE FROM posts 
                                 WHERE id = :id                                  
                                 ');
         $req->execute(array(

@@ -24,4 +24,8 @@ class DBManager{
     public function setDb($db){
         $this->_db = $db;
     }
+
+    public function db(){
+        return $this->_db;
+    }
 }

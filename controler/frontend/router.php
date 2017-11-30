@@ -1,5 +1,4 @@
 <?php
-
 /* ::::::::::: \\\\\\\\\\\\\ FRONTEND ROUTER ///////////// ::::::::::: */
 
 require('controler/frontend/admin_controler.php');
@@ -10,7 +9,7 @@ require('controler/frontend/view_controler.php');
 if (isset($_GET['action'])) { 
             switch($_GET['action']){
 
-/* -------------- \\\\\\\ ADMIN ////// ----------------- */                 
+/* -------------- \\\\\\\ ADMIN ////// ----------------- */
 
                 case "admin" : 
                     showAdmin();
@@ -20,7 +19,7 @@ if (isset($_GET['action'])) {
                     signin($_POST['name'],$_POST['password']);  
                     break;
 
-/* -------------- \\\\\\\ VIEW ////// ----------------- */  
+/* -------------- \\\\\\\ VIEW ////// ----------------- */
 
                 case "showIndex" : 
                     showIndex();
@@ -47,7 +46,7 @@ if (isset($_GET['action'])) {
                     allPosts();
                     break;
 
-    /* -------------- \\\\\\\ COMMENT ////// ----------------- */   
+/* -------------- \\\\\\\ COMMENT ////// ----------------- */
 
                 case "addComment" : 
                     if (isset($_GET['id']) && (int) $_GET['id'] > 0){
@@ -71,6 +70,6 @@ if (isset($_GET['action'])) {
                 default : 
                     throw new Exception('La page demandée n\'existe pas');
             }
-        }else {
-            showIndex();
-        }
+}else {
+    showIndex();
+}

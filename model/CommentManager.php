@@ -12,7 +12,7 @@ class CommentManager extends DBManager{
 
     public function getLastComments($postId)
     {
-        $req = $this->_db->prepare('SELECT * /*DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
+        $req = $this->db()->prepare('SELECT * /*DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
                                     FROM comments 
                                     WHERE post_id = ? AND published = 1
                                     ORDER BY comment_date 
@@ -31,7 +31,7 @@ class CommentManager extends DBManager{
 
     public function getAllComments()
     {
-        $req = $this->_db->query('  SELECT *
+        $req = $this->db()->query('  SELECT *
                                     FROM comments 
                                     ORDER BY comment_date DESC
                                     ');
@@ -47,7 +47,7 @@ class CommentManager extends DBManager{
 
     public function getPostComments($postId)
     {
-        $req = $this->_db->prepare('SELECT */*id, author, comment, alert, post_id,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
+        $req = $this->db()->prepare('SELECT */*id, author, comment, alert, post_id,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
                                     FROM comments 
                                     WHERE post_id = ? 
                                     ORDER BY comment_date DESC
@@ -64,7 +64,7 @@ class CommentManager extends DBManager{
 
     public function getComment($commentId)
     {
-        $req = $this->_db->prepare('   SELECT id, post_id, author, comment
+        $req = $this->db()->prepare('   SELECT id, post_id, author, comment
                                 FROM comments
                                 WHERE id = ?
                                 ');
@@ -76,7 +76,7 @@ class CommentManager extends DBManager{
     
     public function getFilteredComments($filter)
     {
-        $req = $this->_db->query('  SELECT *
+        $req = $this->db()->query('  SELECT *
                                     FROM comments 
                                     WHERE  '.$filter.' = TRUE
                                     ORDER BY comment_date DESC
@@ -94,7 +94,7 @@ class CommentManager extends DBManager{
 
     public function getAlertComments()
     {
-        $req = $this->_db->query('  SELECT *
+        $req = $this->db()->query('  SELECT *
                                     FROM comments 
                                     WHERE  Alert >= 1
                                     ORDER BY comment_date DESC
@@ -114,7 +114,7 @@ class CommentManager extends DBManager{
     public function countComments()
     {
         
-        $req = $this->_db->query('  SELECT COUNT(*) AS nbcomment
+        $req = $this->db()->query('  SELECT COUNT(*) AS nbcomment
                                     FROM comments 
                                     ');
         $datas = $req->fetchAll();
@@ -125,7 +125,7 @@ class CommentManager extends DBManager{
 
     public function countAlertComments()
     {
-        $req = $this->_db->query('  SELECT COUNT(alert) AS nb_alert_comment
+        $req = $this->db()->query('  SELECT COUNT(alert) AS nb_alert_comment
                                     FROM comments 
                                     WHERE alert >= 1
                                     ');
@@ -136,7 +136,7 @@ class CommentManager extends DBManager{
 
      public function countFilteredComments($filter)
     {
-        $req = $this->_db->query('  SELECT COUNT('.$filter.') AS nb_'.$filter.'_comment
+        $req = $this->db()->query('  SELECT COUNT('.$filter.') AS nb_'.$filter.'_comment
                                     FROM comments 
                                     WHERE '.$filter.' = TRUE
                                     ');
@@ -150,7 +150,7 @@ class CommentManager extends DBManager{
 
     public function updateComment($commentId,$author,$comment)
     {
-        $req = $this->_db->prepare('   UPDATE comments 
+        $req = $this->db()->prepare('   UPDATE comments 
                                 SET author= :newauthor, comment= :newcomment
                                 WHERE id = :id                                    
                                     ');
@@ -163,7 +163,7 @@ class CommentManager extends DBManager{
 
     public function acceptComment($commentId)
     {
-        $req = $this->_db->prepare('   UPDATE comments 
+        $req = $this->db()->prepare('   UPDATE comments 
                                 SET published= 1, stand_by= 0,rejected= 0, alert=0
                                 WHERE id = :id                                    
                                     ');
@@ -174,7 +174,7 @@ class CommentManager extends DBManager{
 
     public function rejetComment($commentId)
     {
-        $req = $this->_db->prepare('   UPDATE comments 
+        $req = $this->db()->prepare('   UPDATE comments 
                                 SET rejected= 1, stand_by= 0, published= 0
                                 WHERE id = :id                                    
                                     ');
@@ -185,7 +185,7 @@ class CommentManager extends DBManager{
 
     public function alertComment($commentId)
     {
-        $req = $this->_db->prepare('   UPDATE comments 
+        $req = $this->db()->prepare('   UPDATE comments 
                                 SET alert= alert+1
                                 WHERE id = :id                                    
                                     ');
@@ -198,7 +198,7 @@ class CommentManager extends DBManager{
     
     public function addComment($postId, $author, $comment)
     { 
-        $req = $this->_db->prepare('  INSERT INTO comments(post_id, author, comment) 
+        $req = $this->db()->prepare('  INSERT INTO comments(post_id, author, comment) 
                                     VALUES (:post_id, :author, :comment)
                                 ');
         $datas = $req->execute(array(
@@ -206,15 +206,13 @@ class CommentManager extends DBManager{
             'author'=> $author,
             'comment'=> $comment
         ));
-    
-        return $datas;//???
     }
 
 /* \\\\\\\\\\\::: DELETE  ::::///////////: */
 
     public function deleteComment($commentId)
     {
-        $req = $this->_db->prepare('   DELETE FROM comments 
+        $req = $this->db()->prepare('   DELETE FROM comments 
                                 WHERE id = :id                                  
                                 ');
         $req->execute(array(
@@ -224,7 +222,7 @@ class CommentManager extends DBManager{
 
     public function deletePostComment($postId)
     {
-        $req = $this->_db->prepare('   DELETE FROM comments 
+        $req = $this->db()->prepare('   DELETE FROM comments 
                                 WHERE post_id = :post_id                                  
                                 ');
         $req->execute(array(

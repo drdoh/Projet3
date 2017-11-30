@@ -10,7 +10,7 @@ class AdminManager extends DBManager{
     public function getPassword($name)
     {
         {
-            $req = $this->_db->prepare('   SELECT passwords
+            $req = $this->db()->prepare('SELECT passwords
                                         FROM admins 
                                         WHERE names = ?
                                         ');
