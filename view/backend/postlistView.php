@@ -15,8 +15,7 @@
 
           <?php
           foreach ($datas as $post) {
-          var_dump($post);
-          $extrait = substr(strip_tags($post->content()),0,600);
+            $extrait = substr(strip_tags($post->content()),0,600);
           ?>
 
           <li class="list-group-item list-group-item-action flex-column align-items-start">
@@ -25,17 +24,17 @@
                 
 
                   <div class="col-xl-4 col-lg-6 align-self-center">
-                    <a href="index.php?action=editpost&id=<?=$post->id()?>"><img class="img-fluid" src="<?=$post->img?>" alt=""></a>
+                    <a href="index.php?action=editpost&id=<?=$post->id()?>"><img class="img-fluid" src="<?=$post->img()?>" alt=""></a>
                   </div>
 
                   <div class="col-xl-6 col-lg-6">
-                      <h3><i class="fa fa-book" aria-hidden="true"></i>Chapitre <?=$post->chapter()?> : <?= $post->title ?> </h3>
+                      <h3><i class="fa fa-book" aria-hidden="true"></i>Chapitre <?=$post->chapter()?> : <?= $post->title() ?> </h3>
                       <p class="text-justify"><?=$extrait?>...</p>
                   </div>
 
                   <div class="col-xl-2 col-lg-12 align-self-center  text-sm-center text-xl-left">
                     <div class="d-inline">
-                      <a href="index.php?action=editpost&id=<?=$post->id?>">
+                      <a href="index.php?action=editpost&id=<?=$post->id()?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           Modifier
@@ -43,7 +42,7 @@
                       </a>
                     </div>
                     <div class="d-inline">
-                      <a href="index.php?action=deletepost&id=<?=$post->id?>&chapter=<?=$post->chapter?>">
+                      <a href="index.php?action=deletepost&id=<?=$post->id()?>&chapter=<?=$post->chapter()?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-trash" aria-hidden="true"></i>
                           Supprimer
@@ -51,7 +50,7 @@
                       </a>
                     </div>
                     <div class="d-inline">
-                      <a href="index.php?action=showpostcomments&id=<?=$post->id?>">
+                      <a href="index.php?action=showpostcomments&id=<?=$post->id()?>">
                         <button class="btn btn-outline-primary">
                           <i class="fa fa-comments" aria-hidden="true"></i>
                           Commentaires
