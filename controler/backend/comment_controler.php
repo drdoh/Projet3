@@ -2,7 +2,7 @@
 require_once('model/Autoloader.php');
 Autoloader::register();
 
-/* \\\\\\\\\\\::: COMMENTS CONTROLER ::::///////////: */
+/* \\\\\\\\\\\::: COMMENTS CONTROLER :::://///////// */
 
 function indexComments(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();

@@ -11,12 +11,12 @@ class Post {
     private $_creation_date;
     private $_img;
 
-    
+/* \\\\\\\\\\\::: CONSTRUCT ::::///////////: */
     public function __construct(array $datas){
         self::hydrate($datas);
     }
 
-
+/* \\\\\\\\\\\::: HYDRATE ::::///////////: */
     public function hydrate(array $datas){
         foreach($datas as $key => $value){
             $method = 'set'.ucfirst($key);
@@ -27,7 +27,7 @@ class Post {
         }
     }
 
-    // SETTER
+/* \\\\\\\\\\\::: SETTER ::::///////////: */
     public function setId($id){
         if(!is_numeric($id)){
             throw new Exception('Erreur : l\'id utilisé n\'est pas un entier');
@@ -91,7 +91,7 @@ class Post {
     }
     
 
-    // GETTER
+/* \\\\\\\\\\\::: GETTER ::::///////////: */
     public function id(){
         return $this->_id;
     }
