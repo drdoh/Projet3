@@ -31,7 +31,7 @@ function editPost($postId){
 }
 
 function updatePost($title,$content,$chapter,$imgFiles){ 
-
+    // VERIF 
     if($imgFiles['img']['name']!= false){
         $FileManager = new JeanForteroche\Blog\Model\FileManager();
         $FileManager->upload($imgFiles,$chapter);

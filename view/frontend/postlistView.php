@@ -11,21 +11,21 @@
         <div class="row no-gutters popup-gallery">
           <ul class="list-group">
             <?php
-            foreach($datas as $post){
+            foreach($posts as $post){
             
-            $extrait = substr(strip_tags($post->content),0,600);
+            $extrait = substr(strip_tags($post->content()),0,600);
             ?>
             <li class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="row">
                     <div class="col-xl-4 col-lg-6 align-self-center">
-                        <a class="portfolio-box" href="index.php?action=post&id=<?=$post->id?>">
-                        <img class="img-fluid" src="<?=$post->img?>" alt="">
+                        <a class="portfolio-box" href="index.php?action=post&id=<?=$post->id()?>">
+                        <img class="img-fluid" src="<?=$post->img()?>" alt="">
                         </a>
                     </div>
                     <div class="col-xl-8 col-lg-6">
-                        <h2>Chapitre <?=$post->chapter?> : <?=$post->title ?> </h2>
+                        <h2>Chapitre <?=$post->chapter()?> : <?=$post->title() ?> </h2>
                         <p class="text-justify"><?=$extrait?> ....</p>
-                        <a href="index.php?action=post&id=<?=$post->id?>">à suivre...</a>                
+                        <a href="index.php?action=post&id=<?=$post->id()?>">à suivre...</a>                
                     </div>           
                 </div>
             </li> 

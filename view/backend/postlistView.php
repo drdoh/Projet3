@@ -15,8 +15,8 @@
 
           <?php
           foreach ($datas as $post) {
-          
-           $extrait = substr(strip_tags($post->content),0,600);
+          var_dump($post);
+          $extrait = substr(strip_tags($post->content()),0,600);
           ?>
 
           <li class="list-group-item list-group-item-action flex-column align-items-start">
@@ -25,11 +25,11 @@
                 
 
                   <div class="col-xl-4 col-lg-6 align-self-center">
-                    <a href="index.php?action=editpost&id=<?=$post->id?>"><img class="img-fluid" src="<?=$post->img?>" alt=""></a>
+                    <a href="index.php?action=editpost&id=<?=$post->id()?>"><img class="img-fluid" src="<?=$post->img?>" alt=""></a>
                   </div>
 
                   <div class="col-xl-6 col-lg-6">
-                      <h3><i class="fa fa-book" aria-hidden="true"></i>Chapitre <?=$post->chapter?> : <?= $post->title ?> </h3>
+                      <h3><i class="fa fa-book" aria-hidden="true"></i>Chapitre <?=$post->chapter()?> : <?= $post->title ?> </h3>
                       <p class="text-justify"><?=$extrait?>...</p>
                   </div>
 

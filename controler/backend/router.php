@@ -45,11 +45,11 @@ if (isset($_GET['action'])){
         break;
 
         case 'listpublishedcomment':
-            showPublishedComments();
+            showFilteredComments('published');
         break;
 
         case 'listrejectedcomment':
-            showRejectedComments();
+            showFilteredComments('rejected');
         break;
 
         case 'listalertcomment':
@@ -57,7 +57,7 @@ if (isset($_GET['action'])){
         break;
 
         case 'liststandbycomment':
-            showStandbyComments();
+            showFilteredComments('stand_by');
         break;
         
         case 'showpostcomments': 

@@ -41,18 +41,18 @@
         <div class="row no-gutters">
           
 <?php
-    foreach($datas as $post){   
+    foreach($posts as $post){   
 ?>
         <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="index.php?action=post&id=<?=$post->id?>">
-              <img class="img-fluid align-middle" src="<?=$post->img?>" >
+            <a class="portfolio-box" href="index.php?action=post&id=<?=$post->id()?>">
+              <img class="img-fluid align-middle" src="<?=$post->img()?>" >
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                    <?=$post->title?>
+                    Chapitre <?=$post->chapter()?>
                   </div>
                   <div class="project-name">
-                    Chapitre <?=$post->chapter?> : <?=$post->title?>
+                     <?=$post->title()?>
                   </div>
                 </div>
               </div>

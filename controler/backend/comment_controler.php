@@ -56,6 +56,28 @@ function showStandbyComments(){
     require('view/backend/commentListView.php');
 }
 
+function showFilteredComments($filter){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $datas = $commentManager->getFilteredComments($filter);
+    //SWITCH
+    switch($filter){
+        case 'published':
+        $title="Commentaires publiés";
+        break;
+        case 'rejected':
+        $title="Commentaires Rejetés";
+        break;
+        case 'stand_by':
+        $title="Commentaires en attente de validation";
+        break;
+        default:
+        $title=""; 
+        break;
+    }
+    require('controler/nav-controler.php');
+    require('view/backend/commentListView.php');
+}
+
 function showPostComments($postId){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $comments=$commentManager->getPostComments($postId);

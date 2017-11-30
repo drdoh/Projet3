@@ -4,7 +4,7 @@ Autoloader::register();
 
 function allPosts(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $datas = $postManager->getAllPosts();
+    $posts = $postManager->getAllPosts();
    
     require('controler/nav-controler.php');
     require('view/frontend/postlistView.php');
@@ -13,8 +13,8 @@ function allPosts(){
 function post(){
     // Gestion de l'article
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $datas = $postManager->getPost($_GET['id']);
-    $post = new JeanForteroche\Blog\Model\Post($datas);
+    $post = $postManager->getPost($_GET['id']);
+        
 
     // Gestion des commentaire
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();

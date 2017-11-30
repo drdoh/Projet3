@@ -4,6 +4,7 @@ namespace JeanForteroche\Blog\Model;
 use \PDO;
 
 require_once('model/Manager.php');
+require_once('model/Post.php');
 
 class PostManager extends DBManager{
     
@@ -13,9 +14,13 @@ class PostManager extends DBManager{
                             FROM posts 
                             ORDER BY id 
                             ');
-        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+        $datas = $req->fetchAll();
         $req->closeCursor();
-        return $datas;
+        $posts = [];
+        foreach($datas as $data){
+            $posts[] = new Post($data);
+        }
+        return $posts;
     }
 
     public function getLastPosts()
@@ -25,9 +30,13 @@ class PostManager extends DBManager{
                             ORDER BY id 
                             DESC LIMIT 0, 6
                             ');
-        $datas = $req->fetchAll(PDO::FETCH_OBJ);
+        $datas = $req->fetchAll();
         $req->closeCursor();
-        return $datas;
+        $posts = [];
+        foreach($datas as $data){
+            $posts[] = new Post($data);
+        }
+        return $posts;
     }
 
     public function getPost($postId)
@@ -40,14 +49,15 @@ class PostManager extends DBManager{
 
         $req->execute(array($postId));
         $datas = $req->fetch();
+        
         $req->closeCursor();
-        return $datas;
+        $post = new Post($datas);
+        return $post;
     }
 
     public function updatePost($title,$content,$id)
     {
-
-        $req = $this->_db->prepare('   UPDATE posts 
+        $req = $this->_db->prepare('UPDATE posts 
                                     SET content= :newcontent, title= :newtitle
                                     WHERE id = :id                                    
                                 ');

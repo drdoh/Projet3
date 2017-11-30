@@ -3,20 +3,21 @@
 <div class="container">
     <div class="row">
         <div class="col-sm ">
-
+            <br>
             <h2>Commentaires de l'article : <?=$post['title']?></h2>
-
+            <br>
+            <p><a href="index.php">Retour à la liste des billets</a></p>
             <ul class="list-group">
 
             <?php
+            if(!empty($comments)){
                  foreach($comments as $comment) {
                     
                     if($comment->alert != 0){
                         $html='<span class="badge badge-warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Signalement : '.$comment->alert.'</span>';                               
                     }else{
                         $html='';
-                    }
-                    
+                    }                  
             ?>
                 <li class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="row ">
@@ -67,7 +68,9 @@
                     </div>
                 </li>
 
-            <?php } // Fin de la boucle?>
+            <?php }}else{ ?>
+                <li class="list-group-item list-group-item-action flex-column align-items-start"><p>Il n'y a pas de commentaire pour cette article</p></li>
+           <?php } // Fin de la boucle?>
 
             </ul>
         </div>

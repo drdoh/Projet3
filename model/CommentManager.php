@@ -51,7 +51,7 @@ class CommentManager extends DBManager{
 
     public function getPostComments($postId)
     {
-        $req = $this->_db->prepare('  SELECT id, author, comment, alert, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
+        $req = $this->_db->prepare('SELECT id, author, comment, alert, post_id,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     WHERE post_id = ? 
                                     ORDER BY comment_date DESC
@@ -131,17 +131,6 @@ class CommentManager extends DBManager{
         
     }
 
-    public function countRejectedComments()
-    {
-        $req = $this->_db->query('  SELECT COUNT(rejected) AS nb_rejected_comment
-                                    FROM comments 
-                                    WHERE rejected = TRUE
-                                    ');
-        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-        $req->closeCursor();
-        return $datas;
-    }
-
     public function countAlertComments()
     {
         $req = $this->_db->query('  SELECT COUNT(alert) AS nb_alert_comment
@@ -153,22 +142,44 @@ class CommentManager extends DBManager{
         return $datas;
     }
 
-    public function countStandByComments()
-    {
-        $req = $this->_db->query('  SELECT COUNT(stand_by) AS nb_stand_by_comment
-                                    FROM comments 
-                                    WHERE stand_by = TRUE
-                                    ');
-        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-        $req->closeCursor();
-        return $datas;
-    }
+    // public function countRejectedComments()
+    // {
+    //     $req = $this->_db->query('  SELECT COUNT(rejected) AS nb_rejected_comment
+    //                                 FROM comments 
+    //                                 WHERE rejected = TRUE
+    //                                 ');
+    //     $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+    //     $req->closeCursor();
+    //     return $datas;
+    // }
 
-    public function countPublishedComments()
+    // public function countStandByComments()
+    // {
+    //     $req = $this->_db->query('  SELECT COUNT(stand_by) AS nb_stand_by_comment
+    //                                 FROM comments 
+    //                                 WHERE stand_by = TRUE
+    //                                 ');
+    //     $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+    //     $req->closeCursor();
+    //     return $datas;
+    // }
+
+    // public function countPublishedComments()
+    // {
+    //     $req = $this->_db->query('  SELECT COUNT(published) AS nb_published_comment
+    //                                 FROM comments 
+    //                                 WHERE published = TRUE
+    //                                 ');
+    //     $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+    //     $req->closeCursor();
+    //     return $datas;
+    // }
+
+    public function countFilteredComments($filter)
     {
-        $req = $this->_db->query('  SELECT COUNT(published) AS nb_published_comment
+        $req = $this->_db->query('  SELECT COUNT('.$filter.') AS nb_'.$filter.'_comment
                                     FROM comments 
-                                    WHERE published = TRUE
+                                    WHERE '.$filter.' = TRUE
                                     ');
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();

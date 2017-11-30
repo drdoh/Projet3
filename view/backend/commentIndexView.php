@@ -3,7 +3,9 @@ ob_start();
 ?>
 
 <div class="container">
-  <br>
+<br>
+<p><a href="index.php">Retour à la liste des billets</a></p>
+<br>
   <h1 class="text-center"> INDEX DES COMMENTAIRES </h1>
   <br>
   

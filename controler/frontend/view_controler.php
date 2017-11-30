@@ -4,7 +4,7 @@ Autoloader::register();
 
 function showIndex(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $datas= $postManager->getLastPosts();
+    $posts= $postManager->getLastPosts();
     require('view/index-nav-layout.php');
     require('view/frontend/indexView.php');
 }

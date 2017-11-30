@@ -17,7 +17,7 @@ ob_start();
                       </a>
                     </div>
                     <div>
-                      <a href="#">
+                      <a href="index.php?action=acceptcomment">
                         <button class="btn btn-outline-success btn-sm ml-1">
                           <i class="fa fa-check" aria-hidden="true"></i>
                           Tout Accepter
