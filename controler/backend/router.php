@@ -85,22 +85,16 @@ if (isset($_GET['action'])){
             updateComment($_GET['id'], $_POST['author'],$_POST['comment'],$_GET['postid']);
         break;
 
-        case "acceptselectedcomments" : 
-            foreach($comments as $comment){
-                echo 'coucou';
-            }
+        case "acceptlistedcomments" : 
+            acceptFiltrerComment($_GET['page']);
         break;
 
-        case "rejecteselectedcomments" : 
-            foreach($comments as $comment){
-                echo 'coucou';
-            }
+        case "rejectelistedcomments" : 
+            rejecteFiltrerComment($_GET['page']);
         break;
         
-        case "deleteselectedcomments" : 
-            foreach($comments as $comment){
-                echo 'coucou';
-            }
+        case "deletelistedcomments" : 
+            deleteFiltrerComment($_GET['page']);
         break;
 
         default: 

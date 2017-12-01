@@ -1,7 +1,13 @@
 <?php
 ob_start();
+$lastAction = 'page='.$_GET['action'];
+if(isset($_GET['id'])){
+    $postId = "&id=".$_GET['id'];
+}else{
+    $postId ='';
+}
+
 foreach($comments as $comment){
-    var_dump($comment);
 }
 ?>
     <div class="col-sm-12 d-flex justify-content-around">
@@ -14,7 +20,7 @@ foreach($comments as $comment){
             </a>
         </div>
         <div>
-            <a href="index.php?action=acceptselectedcomments">
+            <a href="index.php?action=acceptlistedcomments&<?=$lastAction?><?=$postId?>">
                 <button class="btn btn-outline-success btn-sm ml-1">
                 <i class="fa fa-check" aria-hidden="true"></i>
                 Tout Accepter
@@ -22,7 +28,7 @@ foreach($comments as $comment){
             </a>
         </div>
         <div>
-            <a href="index.php?action=rejecteselectedcomments">
+            <a href="index.php?action=rejectelistedcomments&lastaction=<?=$_GET['action']?>">
                 <button class="btn btn-outline-warning btn-sm ml-1">
                 <i class="fa fa-times" aria-hidden="true"></i>
                 Tout Rejeter
@@ -30,7 +36,7 @@ foreach($comments as $comment){
             </a>
         </div>
         <div>
-            <a href="index.php?action=deleteselectedcomments">
+            <a href="index.php?action=deletelistedcomments&lastaction=<?=$_GET['action']?>">
                 <button class="btn btn-outline-danger btn-sm ml-1">
                 <i class="fa fa-trash" aria-hidden="true"></i>
                 Tout Supprimer

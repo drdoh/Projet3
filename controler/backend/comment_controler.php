@@ -70,6 +70,12 @@ function deletecomment($id, $postId){
     header('Location: index.php?action='.$_GET['page']);
 }
 
+function deleteFilteredComment($filter){
+    // $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    // $commentManager->deleteComment($id);   
+    // header('Location: index.php?action='.$_GET['page']);
+}
+
 function editcomment($id, $postId){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $comment=$commentManager->getComment($id);
@@ -86,10 +92,28 @@ function acceptComment($id){
     header('Location: index.php?action='.$_GET['page']);
 }
 
+function acceptFilteredComment($filter){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $comments = $commentManager->getFilteredComments($filter);
+    foreach($comments as $comment){
+        $comment=$commentManager->acceptComment($comments->id());
+    }
+    //header('Location: index.php?action='.$_GET['page']);
+}
+
 function rejectComment($id){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $comment=$commentManager->rejetComment($id);
     header('Location: index.php?action='.$_GET['page']);
+}
+
+function rejectFilteredComment($filter){
+    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+    $comments = $commentManager->getFilteredComments($filter);
+    foreach($comments as $comment){
+        $comment=$commentManager->rejetComment($comments->id());
+    }
+   // header('Location: index.php?action='.$_GET['page']);
 }
 
 function updateComment($commentId,$author,$comment,$postId){
