@@ -4,9 +4,9 @@ require('view/backend/commentOption/commentGlobOptionView.php');
 ?>
 
 <div class="container">
-  <br>
-  <h1 class="text-center"> <?= $title?> </h1>
-  <br>
+
+  <h1 class="m-4 text-center"> <?= $title?> </h1>
+
   <div class="row">
     <?=$commentGlobalOption;?>      
   </div>
@@ -44,8 +44,7 @@ require('view/backend/commentOption/commentGlobOptionView.php');
             </div>     
           </li> 
           <?php }}else{ ?>
-                
-                    <li class="list-group-item list-group-item-action flex-column align-items-start">
+                      <li class="list-group-item list-group-item-action flex-column align-items-start">
                         <p>Il n'y a pas de commentaire</p>
                     </li>
             <?php } ?>

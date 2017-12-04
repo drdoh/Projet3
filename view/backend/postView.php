@@ -16,12 +16,12 @@ if(!isset($post)){
 ob_start();
 
 ?>
-<br>
+<!-- ///////////////  ARTICLE \\\\\\\\\\\\ -->
+
 <div class ="container">
 <p><a href="index.php">Retour à la liste des billets</a></p>
     <h1 class="text-center"> Redigez votre article </h1>
-    
-    <br>
+
     <div class="container my-auto">
         <form method="post" action="index.php<?=$URL?>" enctype="multipart/form-data">
             <div class="row">
@@ -36,7 +36,11 @@ ob_start();
                         <input class="form-control" type="text" name="chapter"value='<?= $chapter ?>'>
                     </div>
                 
-            </div><br>
+            </div>
+
+            <br>   
+
+<!-- /////////////// COMMENTAIRE  \\\\\\\\\\\\ -->
 
             <textarea name="content">   
                 <?= $content ?>

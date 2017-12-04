@@ -3,18 +3,14 @@ require('view/backend/commentOption/commentGlobOptionView.php'); ?>
 
 <div class="container">
     <div class="row">
-        <div class="col-sm "><br>
+        <div class="col-sm ">
             
-
-            <h2>Commentaires de l'article : <?=$post->title()?></h2><br>
-            
-
-            <p><a href="index.php">Retour à la liste des billets</a></p>
+            <h1 class="m-4 text-center">Commentaires de l'article : <?=$post->title()?></h1>
 
             <div class="row">
                 <?=$commentGlobalOption;?>      
-            </div><br>
-
+            </div>
+            
             <ul class="list-group">
 
                 <?php

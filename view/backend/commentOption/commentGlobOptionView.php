@@ -13,7 +13,7 @@ if(!isset($_GET['id'])||$_GET['id']==''){
 foreach($comments as $comment){
 }
 ?>
-    <div class="col-sm-12 d-flex justify-content-around">
+    <div class="m-4 col-sm-12 d-flex justify-content-around">
         <div>
             <a href="index.php?action=<?=$retour?>">
                 <button class="btn btn-outline-primary btn-sm ml-1">
