@@ -16,6 +16,7 @@ require('view/backend/commentOption/commentGlobOptionView.php');
         <ul class="list-group">
 
           <?php
+          if(!empty($comments)){
           foreach ($comments as $comment) {
             
             require('controler/backend/commentStatus.php');
@@ -42,9 +43,12 @@ require('view/backend/commentOption/commentGlobOptionView.php');
               </div>
             </div>     
           </li> 
-          <?php
-          }    
-          ?>
+          <?php }}else{ ?>
+                
+                    <li class="list-group-item list-group-item-action flex-column align-items-start">
+                        <p>Il n'y a pas de commentaire</p>
+                    </li>
+            <?php } ?>
       </ul>
     </div>
   </section>

@@ -81,20 +81,24 @@ if (isset($_GET['action'])){
             deleteComment($_GET['id'],$_GET['postid']);
         break;
 
-        case "updateComment" : 
+        case "updateComment" :
             updateComment($_GET['id'], $_POST['author'],$_POST['comment'],$_GET['postid']);
         break;
 
         case "acceptlistedcomments" : 
-            acceptListedComment($_GET['page']);
+       
+        if(isset($_GET['id'])) {$_GET['id'] = $_GET['id'];}else{$_GET['id'] = '';}
+            acceptListedComment($_GET['page'],$_GET['id'] );
         break;
 
         case "rejectelistedcomments" : 
-            rejectListedComment($_GET['page']);
+        if(isset($_GET['id'])) {$_GET['id'] = $_GET['id'];}else{$_GET['id'] = '';}
+            rejectListedComment($_GET['page'],$_GET['id']);
         break;
         
         case "deletelistedcomments" : 
-            deleteListedComment($_GET['page']);
+        if(isset($_GET['id'])) {$_GET['id'] = $_GET['id'];}else{$_GET['id'] = '';}
+            deleteListedComment($_GET['page'],$_GET['id']);
         break;
 
         default: 

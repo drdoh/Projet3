@@ -1,10 +1,13 @@
 <?php
 ob_start();
 $lastAction = 'page='.$_GET['action'];
-if(isset($_GET['id'])){
-    $postId = "&id=".$_GET['id'];
-}else{
+
+if(!isset($_GET['id'])||$_GET['id']==''){
+    $retour = 'indexcomment';
     $postId ='';
+}else{
+    $retour = '';
+    $postId = "&id=".$_GET['id'];
 }
 
 foreach($comments as $comment){
@@ -12,7 +15,7 @@ foreach($comments as $comment){
 ?>
     <div class="col-sm-12 d-flex justify-content-around">
         <div>
-            <a href="index.php?action=indexcomment">
+            <a href="index.php?action=<?=$retour?>">
                 <button class="btn btn-outline-primary btn-sm ml-1">
                 <i class="fa fa-home" aria-hidden="true"></i>
                 Retour

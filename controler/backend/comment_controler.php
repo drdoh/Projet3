@@ -70,7 +70,7 @@ function deletecomment($id, $postId){
     header('Location: index.php?action='.$_GET['page']);
 }
 
-function deleteListedComment($filter){
+function deleteListedComment($filter,$id){
     switch ($filter) {
         case 'listrejectedcomment': 
         case 'listpublishedcomment':
@@ -102,6 +102,11 @@ function deleteListedComment($filter){
         $commentManager = new JeanForteroche\Blog\Model\CommentManager();
         $comments = $commentManager->getAllComments();
         break;
+
+        case 'showpostcomments':
+        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $comments = $commentManager->getPostComments($id);
+        break;
         
         default:
         $comments="";
@@ -112,7 +117,7 @@ function deleteListedComment($filter){
         $comment=$commentManager->deleteComment($comment->id());
     }
 
-    header('Location: index.php?action='.$_GET['page']);
+    header('Location: index.php?action='.$_GET['page'].'&id='.$id);
 }
 
 function editcomment($id, $postId){
@@ -132,7 +137,7 @@ function acceptComment($id){
     header('Location: index.php?action='.$_GET['page']);
 }
 
-function acceptListedComment($filter){
+function acceptListedComment($filter, $id){
     switch ($filter) {
         case 'listrejectedcomment': 
         case 'listpublishedcomment':
@@ -164,6 +169,11 @@ function acceptListedComment($filter){
             $commentManager = new JeanForteroche\Blog\Model\CommentManager();
             $comments = $commentManager->getAllComments();
             break;
+
+            case 'showpostcomments':
+            $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+            $comments = $commentManager->getPostComments($id);
+            break;
             
             default:
             $comments="";
@@ -173,7 +183,7 @@ function acceptListedComment($filter){
         foreach($comments as $comment){
             $comment=$commentManager->acceptComment($comment->id());
         }
-    header('Location: index.php?action='.$_GET['page']);
+    header('Location: index.php?action='.$_GET['page'].'&id='.$id);
 }
 
 function rejectComment($id){
@@ -182,7 +192,7 @@ function rejectComment($id){
     header('Location: index.php?action='.$_GET['page']);
 }
 
-function rejectListedComment($filter){
+function rejectListedComment($filter, $id){
  
     switch ($filter) {
         case 'listrejectedcomment': 
@@ -215,6 +225,11 @@ function rejectListedComment($filter){
         $commentManager = new JeanForteroche\Blog\Model\CommentManager();
         $comments = $commentManager->getAllComments();
         break;
+
+        case 'showpostcomments':
+        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $comments = $commentManager->getPostComments($id);
+        break;
         
         default:
         $comments="";
@@ -225,7 +240,7 @@ function rejectListedComment($filter){
         $comment=$commentManager->rejetComment($comment->id());
     }
 
-    header('Location: index.php?action='.$_GET['page']);
+    header('Location: index.php?action='.$_GET['page'].'&id='.$id);
 }
 
 function updateComment($commentId,$author,$comment,$postId){
