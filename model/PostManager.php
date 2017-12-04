@@ -41,6 +41,24 @@ class PostManager extends DBManager{
         return $posts;
     }
 
+    public function getFivePosts($cPage,$perPage)
+    {
+        $req = $this->db()->query(' SELECT id, title, content, chapter, img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
+                            FROM posts 
+                            ORDER BY id 
+                            LIMIT '.(($cPage-1)*$perPage).','.$perPage.'
+                            ');
+// var_dump($req);
+// die();
+        $datas = $req->fetchAll();
+        $req->closeCursor();
+        $posts = [];
+        foreach($datas as $data){
+            $posts[] = new Post($data);
+        }
+        return $posts;
+    }
+
     public function getPost($postId)
     {
 
@@ -58,7 +76,7 @@ class PostManager extends DBManager{
     }
 /* \\\\\\\\\\\::: COUNT ::::///////////: */
 
-public function countPost()
+public function countPosts()
 {
     
     $req = $this->db()->query('  SELECT COUNT(*) AS nbposts

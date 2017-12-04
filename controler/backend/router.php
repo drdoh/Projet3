@@ -105,5 +105,5 @@ if (isset($_GET['action'])){
             allPosts();
     }
 }else {
-    allPosts();
+    indexPosts();
 }

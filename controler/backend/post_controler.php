@@ -4,7 +4,10 @@ Autoloader::register();
 
 function indexPosts(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $datas = $postManager->getAllPosts();
+    require('controler/paging_controler.php');
+    $perPage = 5;
+    $cPage = pagingPost($postManager, $perPage);
+    $datas = $postManager->getFivePosts($cPage,$perPage);
     require('controler/nav-controler.php');
     require('view/backend/postlistView.php');
 }
