@@ -56,6 +56,19 @@ class PostManager extends DBManager{
         $post = new Post($datas);
         return $post;
     }
+/* \\\\\\\\\\\::: COUNT ::::///////////: */
+
+public function countPost()
+{
+    
+    $req = $this->db()->query('  SELECT COUNT(*) AS nbposts
+                                FROM posts 
+                                ');
+    $datas = $req->fetchAll();
+    $req->closeCursor();
+    return $datas;
+
+}
 
 /* \\\\\\\\\\\::: UPDATE  ::::///////////: */
 
