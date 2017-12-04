@@ -1,6 +1,5 @@
+<?php ob_start();?>
 
-<?php require('view/layout.php'); ?>
-<br>
 <div class="container">
 
   <h1 class="text-center"> LISTE DES CHAPITRES </h1>
@@ -68,3 +67,7 @@
     </div>
   </section>
 </div>
+<?php
+$content = ob_get_clean();
+require('view/layout.php');
+?>

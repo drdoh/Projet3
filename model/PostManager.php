@@ -13,9 +13,9 @@ class PostManager extends DBManager{
     public function getAllPosts()
     {
         $req = $this->db()->query(' SELECT id, title, content, chapter,img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
-                            FROM posts 
-                            ORDER BY id 
-                            ');
+                                    FROM posts 
+                                    ORDER BY id 
+                                    ');
         $datas = $req->fetchAll();
         $req->closeCursor();
         $posts = [];
@@ -28,10 +28,10 @@ class PostManager extends DBManager{
     public function getLastPosts()
     {
         $req = $this->db()->query(' SELECT id, title, content, chapter, img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
-                            FROM posts 
-                            ORDER BY id 
-                            DESC LIMIT 0, 6
-                            ');
+                                    FROM posts 
+                                    ORDER BY id 
+                                    DESC LIMIT 0, 6
+                                    ');
         $datas = $req->fetchAll();
         $req->closeCursor();
         $posts = [];
@@ -41,15 +41,14 @@ class PostManager extends DBManager{
         return $posts;
     }
 
-    public function getFivePosts($cPage,$perPage)
+    public function getSomePosts($cPage,$perPage)
     {
         $req = $this->db()->query(' SELECT id, title, content, chapter, img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
-                            FROM posts 
-                            ORDER BY id 
-                            LIMIT '.(($cPage-1)*$perPage).','.$perPage.'
-                            ');
-// var_dump($req);
-// die();
+                                    FROM posts 
+                                    ORDER BY id 
+                                    LIMIT '.(($cPage-1)*$perPage).','.$perPage.'
+                                    ');
+
         $datas = $req->fetchAll();
         $req->closeCursor();
         $posts = [];
@@ -84,7 +83,8 @@ public function countPosts()
                                 ');
     $datas = $req->fetchAll();
     $req->closeCursor();
-    return $datas;
+
+    return $datas[0];
 
 }
 

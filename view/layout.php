@@ -34,6 +34,8 @@
     <?php if(isset($nav)){echo $nav;}?>
    
     <?php if(isset($content)){echo $content;}?>
+    
+    <?php if(isset($paging)){echo $paging;}?>
 
     <?php if(isset($footer)){echo $footer;}?>
 

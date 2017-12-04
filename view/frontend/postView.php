@@ -5,7 +5,7 @@
 
 <div class="container my-auto">
     <h1><?= $post->title() ?></h1>
-    <p><a href="index.php?action=listAllPosts">Retour à la liste des billets</a></p>
+    <p><a href="index.php?action=listPosts">Retour à la liste des billets</a></p>
 
     <div>
         <h6>

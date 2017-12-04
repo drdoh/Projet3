@@ -42,7 +42,7 @@ if (isset($_GET['action'])) {
                     }
                     break;
 
-                case "listAllPosts" : 
+                case "listPosts" : 
                     allPosts();
                     break;
 

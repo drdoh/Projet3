@@ -16,6 +16,10 @@ if (isset($_GET['action'])){
             stopSession();
         break;
     /* -------------- \\\\\\\ POST////// ----------------- */ 
+        case 'listPost': 
+            indexPosts();
+        break;
+
         case 'editpost': 
             editPost($_GET['id']);
         break;
@@ -102,7 +106,7 @@ if (isset($_GET['action'])){
         break;
 
         default: 
-            allPosts();
+            indexPosts();
     }
 }else {
     indexPosts();

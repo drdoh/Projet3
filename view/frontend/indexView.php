@@ -65,7 +65,7 @@
     </section>
     <br/>
     <div class="d-flex justify-content-center">
-    <a href="index.php?action=listAllPosts"><button type="button" class="btn btn-primary btn-lg ">  Cliquez ici pour retrouver l'intégralité des chapitres ...</button></a> 
+    <a href="index.php?action=listPosts"><button type="button" class="btn btn-primary btn-lg ">  Cliquez ici pour retrouver l'intégralité des chapitres ...</button></a> 
     </div>
 <!-- ______________************* ZONE DE CONTACT ****************________ -->
 

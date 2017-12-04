@@ -4,8 +4,8 @@ Autoloader::register();
 
 function allPosts(){
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $posts = $postManager->getAllPosts();
-   
+    require('controler/paging_controler.php');
+    $posts = $postManager->getSomePosts($cPage,$perPage);
     require('controler/nav-controler.php');
     require('view/frontend/postlistView.php');
 }

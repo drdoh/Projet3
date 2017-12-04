@@ -3,11 +3,9 @@ require_once('model/Autoloader.php');
 Autoloader::register();
 
 function indexPosts(){
-    $postManager = new JeanForteroche\Blog\Model\PostManager();
+    $postManager = new JeanForteroche\Blog\Model\PostManager(); 
     require('controler/paging_controler.php');
-    $perPage = 5;
-    $cPage = pagingPost($postManager, $perPage);
-    $datas = $postManager->getFivePosts($cPage,$perPage);
+    $datas = $postManager->getSomePosts($cPage,$perPage);
     require('controler/nav-controler.php');
     require('view/backend/postlistView.php');
 }

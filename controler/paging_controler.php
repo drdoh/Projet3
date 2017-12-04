@@ -2,26 +2,31 @@
 require_once('model/Autoloader.php');
 Autoloader::register();
 
-    function pagingPost($postManager,$perPage){
-    
-        $datas = $postManager->countPosts();
-        $nbPosts = $datas[0]['nbposts'];
-        $nbPage= ceil($nbPosts/$perPage);
-        if(isset($_GET['p'])&& $_GET['p']>0 && $_GET['p']<=$nbPage){
-            $cPage = $_GET['p'];
-        }else{
-            $cPage = 1;
-        }
-        
-        
-        for($i=1;$i<=$nbPage;$i++){
-            if($i==$cPage){
-                echo " $i /"; 
-            }else{
-                echo " <a href=\"index.php?p=$i\">$i</a> / ";
-            }
-        }
 
-        return $cPage;
-        
+$perPage = 5;    
+$nbPosts = $postManager->countPosts();
+
+$nbPage= ceil($nbPosts['nbposts']/$perPage);
+
+if(isset($_GET['p'])&& $_GET['p']>0 && $_GET['p']<=$nbPage){
+    $cPage = $_GET['p'];
+}else{
+    $cPage = 1;
+}
+
+
+for($i=1 ; $i<=$nbPage ; $i++){
+    if($i==$cPage){
+        $pagingBtns[] = array(
+            "link" => " <a class=\"page-link\" href=\"\"> $i </a> ",
+            "class"=>"active"
+        );
+    }else{
+        $pagingBtns[] = array(
+            "link" =>" <a class=\"page-link\" href=\"index.php?action=listPosts&p=$i\">$i</a> ",
+            "class"=>""
+        );
     }
+}
+
+require('view/paging-layout.php');
