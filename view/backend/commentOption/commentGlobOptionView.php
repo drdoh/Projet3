@@ -28,7 +28,7 @@ foreach($comments as $comment){
             </a>
         </div>
         <div>
-            <a href="index.php?action=rejectelistedcomments&lastaction=<?=$_GET['action']?>">
+            <a href="index.php?action=rejectelistedcomments&<?=$lastAction?><?=$postId?>">
                 <button class="btn btn-outline-warning btn-sm ml-1">
                 <i class="fa fa-times" aria-hidden="true"></i>
                 Tout Rejeter
@@ -36,7 +36,7 @@ foreach($comments as $comment){
             </a>
         </div>
         <div>
-            <a href="index.php?action=deletelistedcomments&lastaction=<?=$_GET['action']?>">
+            <a href="index.php?action=deletelistedcomments&<?=$lastAction?><?=$postId?>">
                 <button class="btn btn-outline-danger btn-sm ml-1">
                 <i class="fa fa-trash" aria-hidden="true"></i>
                 Tout Supprimer

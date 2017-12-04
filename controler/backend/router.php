@@ -86,15 +86,15 @@ if (isset($_GET['action'])){
         break;
 
         case "acceptlistedcomments" : 
-            acceptFiltrerComment($_GET['page']);
+            acceptListedComment($_GET['page']);
         break;
 
         case "rejectelistedcomments" : 
-            rejecteFiltrerComment($_GET['page']);
+            rejectListedComment($_GET['page']);
         break;
         
         case "deletelistedcomments" : 
-            deleteFiltrerComment($_GET['page']);
+            deleteListedComment($_GET['page']);
         break;
 
         default: 

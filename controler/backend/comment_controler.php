@@ -70,10 +70,49 @@ function deletecomment($id, $postId){
     header('Location: index.php?action='.$_GET['page']);
 }
 
-function deleteFilteredComment($filter){
-    // $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    // $commentManager->deleteComment($id);   
-    // header('Location: index.php?action='.$_GET['page']);
+function deleteListedComment($filter){
+    switch ($filter) {
+        case 'listrejectedcomment': 
+        case 'listpublishedcomment':
+        case 'liststandbycomment':
+            switch($filter){
+                case  'listrejectedcomment':
+                $filter = 'rejected';
+                break;
+                case  'listpublishedcomment':
+                $filter = 'published';
+                break;
+                case  'liststandbycomment':
+                $filter = 'stand_by';
+                break;
+                default:
+                $filter="";
+                break;
+            }
+        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $comments = $commentManager->getFilteredComments($filter);
+        break;
+            
+        case 'listalertcomment':
+        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $comments = $commentManager->getAlertComments();
+        break;
+        
+        case 'listcomment':
+        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $comments = $commentManager->getAllComments();
+        break;
+        
+        default:
+        $comments="";
+        break;
+    }
+    
+    foreach($comments as $comment){
+        $comment=$commentManager->deleteComment($comment->id());
+    }
+
+    header('Location: index.php?action='.$_GET['page']);
 }
 
 function editcomment($id, $postId){
@@ -89,16 +128,52 @@ function editcomment($id, $postId){
 function acceptComment($id){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $comment=$commentManager->acceptComment($id);
+   
     header('Location: index.php?action='.$_GET['page']);
 }
 
-function acceptFilteredComment($filter){
-    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $comments = $commentManager->getFilteredComments($filter);
-    foreach($comments as $comment){
-        $comment=$commentManager->acceptComment($comments->id());
-    }
-    //header('Location: index.php?action='.$_GET['page']);
+function acceptListedComment($filter){
+    switch ($filter) {
+        case 'listrejectedcomment': 
+        case 'listpublishedcomment':
+        case 'liststandbycomment':
+            switch($filter){
+                case  'listrejectedcomment':
+                $filter = 'rejected';
+                break;
+                case  'listpublishedcomment':
+                $filter = 'published';
+                break;
+                case  'liststandbycomment':
+                $filter = 'stand_by';
+                break;
+                default:
+                $filter="";
+                break;
+            }
+            $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+            $comments = $commentManager->getFilteredComments($filter);
+            break;
+            
+            case 'listalertcomment':
+            $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+            $comments = $commentManager->getAlertComments();
+            break;
+            
+            case 'listcomment':
+            $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+            $comments = $commentManager->getAllComments();
+            break;
+            
+            default:
+            $comments="";
+            break;
+        }
+        
+        foreach($comments as $comment){
+            $comment=$commentManager->acceptComment($comment->id());
+        }
+    header('Location: index.php?action='.$_GET['page']);
 }
 
 function rejectComment($id){
@@ -107,13 +182,50 @@ function rejectComment($id){
     header('Location: index.php?action='.$_GET['page']);
 }
 
-function rejectFilteredComment($filter){
-    $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $comments = $commentManager->getFilteredComments($filter);
-    foreach($comments as $comment){
-        $comment=$commentManager->rejetComment($comments->id());
+function rejectListedComment($filter){
+ 
+    switch ($filter) {
+        case 'listrejectedcomment': 
+        case 'listpublishedcomment':
+        case 'liststandbycomment':
+            switch($filter){
+                case  'listrejectedcomment':
+                $filter = 'rejected';
+                break;
+                case  'listpublishedcomment':
+                $filter = 'published';
+                break;
+                case  'liststandbycomment':
+                $filter = 'stand_by';
+                break;
+                default:
+                $filter="";
+                break;
+            }
+        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $comments = $commentManager->getFilteredComments($filter);
+        break;
+            
+        case 'listalertcomment':
+        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $comments = $commentManager->getAlertComments();
+        break;
+        
+        case 'listcomment':
+        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $comments = $commentManager->getAllComments();
+        break;
+        
+        default:
+        $comments="";
+        break;
     }
-   // header('Location: index.php?action='.$_GET['page']);
+    
+    foreach($comments as $comment){
+        $comment=$commentManager->rejetComment($comment->id());
+    }
+
+    header('Location: index.php?action='.$_GET['page']);
 }
 
 function updateComment($commentId,$author,$comment,$postId){
