@@ -1,16 +1,25 @@
 <?php 
 if(!isset($post)){
+    if(!empty($_POST)){
+        $title= $_POST['title'];
+        $content=$_POST['content'];
+        $chapter=$_POST['chapter'];
+        $URL='?action=addpost';
+        $img= '';
+    }else{
     $title='';
     $content='';
     $chapter='';
     $URL='?action=addpost';
     $img='';
+    }
 }else{
     $title=$post->title();
     $content=$post->content();
     $chapter=$post->chapter();
     $URL='?action=updatepost&id='.$_GET['id'].'';
     $img='<img class="jumbotron" src="'.$post->img().'" style="width:100%;">';
+    
 } 
 
 ob_start();
@@ -21,7 +30,7 @@ ob_start();
 <div class ="container">
 <p><a href="index.php">Retour à la liste des billets</a></p>
     <h1 class="m-4 text-center"> Redigez votre article </h1>
-
+    <?php if(isset($message)){echo $message;}?>
     <div class="container my-auto">
         <form method="post" action="index.php<?=$URL?>" enctype="multipart/form-data">
             <div class="row">
@@ -39,8 +48,6 @@ ob_start();
             </div>
 
             <br>   
-
-<!-- /////////////// COMMENTAIRE  \\\\\\\\\\\\ -->
 
             <textarea name="content">   
                 <?= $content ?>
