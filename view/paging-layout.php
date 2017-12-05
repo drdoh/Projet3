@@ -1,5 +1,5 @@
 <?php ob_start();
-
+if(isset($pagingBtns)){
 ?>
 
     <!-- Navigation -->
@@ -13,6 +13,7 @@
       </a>
     </li>
           <?php
+          
             foreach($pagingBtns as $pagingBtn){
           ?>
 
@@ -34,4 +35,4 @@
 
 </nav>
 
-<?php $paging = ob_get_clean(); ?>
+<?php } $paging = ob_get_clean(); ?>

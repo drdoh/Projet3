@@ -5,7 +5,7 @@ Autoloader::register();
 function indexPosts(){
     $postManager = new JeanForteroche\Blog\Model\PostManager(); 
     require('controler/paging_controler.php');
-    $datas = $postManager->getSomePosts($cPage,$perPage);
+    $posts = $postManager->getSomePosts($cPage,$perPage);
     require('controler/nav-controler.php');
     require('view/backend/postlistView.php');
 }
@@ -13,13 +13,6 @@ function indexPosts(){
 function newPost(){
     require('controler/nav-controler.php');
     require('view/backend/postView.php');
-}
-
-function allPosts(){
-    $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $datas = $postManager->getAllPosts();
-    require('controler/nav-controler.php');
-    require('view/backend/postlistView.php');
 }
 
 function editPost($postId){

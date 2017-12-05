@@ -2,18 +2,18 @@
 
 <div class="container">
 
-  <h1 class="text-center"> LISTE DES CHAPITRES </h1>
-  <br>
+  <h1 class="m-4 text-center"> LISTE DES CHAPITRES </h1>
+  <p><a href="index.php?action=newpost"><button class="btn btn-primary btn-lg btn-block">Nouveau chapitre</button></a></p>
   
-  <a href="index.php?action=newpost"><button class="btn btn-primary btn-lg btn-block">Nouveau chapitre</button></a>
-  <br>
 
   <section class="p-0" id="portfolio">
     <div class="container p-0">
+      
         <ul class="list-group">
 
           <?php
-          foreach ($datas as $post) {
+          if(!empty($posts)){
+          foreach ($posts as $post) {
             $extrait = substr(strip_tags($post->content()),0,600);
           ?>
 
@@ -60,9 +60,11 @@
               </div>
             </div>     
           </li> 
-          <?php
-          }    
-          ?>
+          <?php }}else{ ?>
+                      <li class="list-group-item list-group-item-action flex-column align-items-start">
+                        <p>Il n'y a pas encore de chapitre : Lancez vous en cliquant <a href="index.php?action=newpost"> ICI </a></p>
+                    </li>
+            <?php } ?>
       </ul>
     </div>
   </section>

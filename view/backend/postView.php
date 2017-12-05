@@ -20,7 +20,7 @@ ob_start();
 
 <div class ="container">
 <p><a href="index.php">Retour à la liste des billets</a></p>
-    <h1 class="text-center"> Redigez votre article </h1>
+    <h1 class="m-4 text-center"> Redigez votre article </h1>
 
     <div class="container my-auto">
         <form method="post" action="index.php<?=$URL?>" enctype="multipart/form-data">
