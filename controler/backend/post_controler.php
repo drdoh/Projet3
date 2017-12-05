@@ -16,7 +16,7 @@ function newPost(){
 }
 
 function editPost($postId){
-    if(isset($postId)&& is_int($postId) && $postId<0){
+    if(isset($postId)&& is_numeric($postId) && $postId>0){
         $postManager = new JeanForteroche\Blog\Model\PostManager();
         $post=$postManager->getPost($postId);
         
@@ -68,8 +68,8 @@ function addPost($title,$content,$chapter,$imgFiles){
 }
 
 function deletePost($id,$chapter){
-    if(isset($chapter)&& is_int($chapter) && $chapter<0){
-        if(isset($id)&& is_int($id) && $id<0){
+    if(isset($chapter)&& is_numeric($chapter) && $chapter>0){
+        if(isset($id)&& is_numeric($id) && $id>0){
             $postManager = new JeanForteroche\Blog\Model\PostManager();
             $postManager->deletePost($id);
             $commentManager = new JeanForteroche\Blog\Model\CommentManager();
@@ -82,10 +82,10 @@ function deletePost($id,$chapter){
             }
             header('Location: index.php');
         }else{
-            throw new Exception('Erreur : Mauvais N° de chapitre envoyé');
+            throw new Exception('Erreur : Mauvais id envoyé');
         }   
-   }else{
-        throw new Exception('Erreur : Mauvais id envoyé');
+    }else{
+        throw new Exception('Erreur : Mauvais N° de chapitre envoyé');
    }
 }
 
