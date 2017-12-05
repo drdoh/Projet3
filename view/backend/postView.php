@@ -21,11 +21,8 @@ if(!isset($post)){
     $img='<img class="jumbotron" src="'.$post->img().'" style="width:100%;">';
     
 } 
-
 ob_start();
-
 ?>
-<!-- ///////////////  ARTICLE \\\\\\\\\\\\ -->
 
 <div class ="container">
 <p><a href="index.php">Retour à la liste des billets</a></p>

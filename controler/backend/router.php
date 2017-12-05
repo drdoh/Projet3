@@ -111,3 +111,5 @@ if (isset($_GET['action'])){
 }else {
     indexPosts();
 }
+
+

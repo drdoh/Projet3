@@ -90,15 +90,16 @@ public function countPosts()
 
 /* \\\\\\\\\\\::: UPDATE  ::::///////////: */
 
-    public function updatePost($title,$content,$id)
+    public function updatePost($title,$content,$id, $chapter)
     {
         $req = $this->db()->prepare('UPDATE posts 
-                                    SET content= :newcontent, title= :newtitle
+                                    SET content= :newcontent, title= :newtitle, chapter= :newchapter
                                     WHERE id = :id                                    
                                 ');
         $req->execute(array(
             'newcontent'=>$content,
             'newtitle'=>$title,
+            'newchapter'=>$chapter,
             
             'id'=>$id
         ));
