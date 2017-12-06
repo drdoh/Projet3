@@ -12,7 +12,7 @@ class PostManager extends DBManager{
 
     public function getAllPosts()
     {
-        $req = $this->db()->query(' SELECT id, title, content, chapter,img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
+        $req = $this->db()->query(' SELECT *, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
                                     FROM posts 
                                     ORDER BY id 
                                     ');
@@ -27,7 +27,7 @@ class PostManager extends DBManager{
 
     public function getLastPosts()
     {
-        $req = $this->db()->query(' SELECT id, title, content, chapter, img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
+        $req = $this->db()->query(' SELECT *, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
                                     FROM posts 
                                     ORDER BY id 
                                     DESC LIMIT 0, 6
@@ -43,7 +43,7 @@ class PostManager extends DBManager{
 
     public function getSomePosts($cPage,$perPage)
     {
-        $req = $this->db()->query(' SELECT id, title, content, chapter, img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
+        $req = $this->db()->query(' SELECT *, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
                                     FROM posts 
                                     ORDER BY id 
                                     LIMIT '.(($cPage-1)*$perPage).','.$perPage.'
@@ -61,7 +61,7 @@ class PostManager extends DBManager{
     public function getPost($postId)
     {
 
-        $req = $this->db()->prepare('SELECT */*id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr*/
+        $req = $this->db()->prepare('SELECT *, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr
                                     FROM posts 
                                     WHERE id = ?
                                     ');

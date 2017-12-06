@@ -8,7 +8,7 @@
     <p><a href="index.php?action=listPosts">Retour à la liste des billets</a></p>
 
     <div>
-        <h6> <em> <?= $post->creation_date() ?></em> </h6>
+        <h6 class="text-right"> <em> <?= $post->creation_date_fr() ?></em> </h6>
         
         <div class="content" >
             <?= $post->content() ?>
@@ -25,7 +25,7 @@
                 <h2>Commentaires</h2>
                 <?php foreach($comments as $comment):?>
                     <div class="p-2 border  border-warning rounded">
-                        <p ><strong><?= $comment->author() ?></strong> le <?= $comment->comment_date() ?> <em>(<a href="index.php?action=alertComment&id=<?=$post->id()?>&commentId=<?=$comment->id()?>">Signalé</a>)</em></p>
+                        <p ><strong><?= $comment->author() ?></strong> <em>le <?= $comment->comment_date_fr() ?> (<a href="index.php?action=alertComment&id=<?=$post->id()?>&commentId=<?=$comment->id()?>">Signalé</a>)</em></p>
                         <hr class="light">
                         <p><?= nl2br($comment->comment()) ?> </p>
                     </div><br>

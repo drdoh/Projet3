@@ -10,9 +10,9 @@ class CommentManager extends DBManager{
 
 /* \\\\\\\\\\\::: READ ::::///////////: */
 
-    public function getLastComments($postId)
+    public function getLastPostComments($postId)
     {
-        $req = $this->db()->prepare('SELECT * /*DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
+        $req = $this->db()->prepare('SELECT * ,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     WHERE post_id = ? AND published = 1
                                     ORDER BY comment_date 
@@ -23,15 +23,17 @@ class CommentManager extends DBManager{
         $datas = $req->fetchAll();
         $req->closeCursor();
         $comments = [];
+
         foreach($datas as $data){
             $comments[] = new Comment($data);
         }
+
         return $comments;
     }
 
     public function getAllComments()
     {
-        $req = $this->db()->query('  SELECT *
+        $req = $this->db()->query('  SELECT * ,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     ORDER BY comment_date DESC
                                     ');
@@ -47,7 +49,7 @@ class CommentManager extends DBManager{
 
     public function getPostComments($postId)
     {
-        $req = $this->db()->prepare('SELECT */*id, author, comment, alert, post_id,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr*/
+        $req = $this->db()->prepare('SELECT * ,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     WHERE post_id = ? 
                                     ORDER BY comment_date DESC
@@ -76,7 +78,7 @@ class CommentManager extends DBManager{
     
     public function getFilteredComments($filter)
     {
-        $req = $this->db()->query('  SELECT *
+        $req = $this->db()->query(' SELECT *
                                     FROM comments 
                                     WHERE  '.$filter.' = TRUE
                                     ORDER BY comment_date DESC
@@ -94,7 +96,7 @@ class CommentManager extends DBManager{
 
     public function getAlertComments()
     {
-        $req = $this->db()->query('  SELECT *
+        $req = $this->db()->query(' SELECT *
                                     FROM comments 
                                     WHERE  Alert >= 1
                                     ORDER BY comment_date DESC

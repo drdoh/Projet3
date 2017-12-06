@@ -10,17 +10,12 @@ function allPosts(){
     require('view/frontend/postlistView.php');
 }
 
-function post(){
-    // Gestion de l'article
-    $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $post = $postManager->getPost($_GET['id']);
-        
+function post($id){
 
-    // Gestion des commentaire
+    $postManager = new JeanForteroche\Blog\Model\PostManager();
+    $post = $postManager->getPost($id);
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $comments = $commentManager->getLastComments($_GET['id']);
-    
-    // Gestion de la vue
+    $comments = $commentManager->getLastPostComments($id);
     require('controler/nav-controler.php');
     require('view/frontend/postView.php');
 }

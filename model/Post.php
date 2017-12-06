@@ -8,7 +8,7 @@ class Post {
     private $_title;
     private $_chapter;
     private $_content;
-    private $_creation_date;
+    private $_creation_date_fr;
     private $_img;
 
 /* \\\\\\\\\\\::: CONSTRUCT ::::///////////: */
@@ -72,13 +72,13 @@ class Post {
         $this->_content = $content ;
     }
     
-    public function setCreation_date($date){
-        /*if(!is_string($date)){
+    public function setCreation_date_fr($date_fr){
+        if(!is_string($date_fr)){
             throw new Exception('Erreur : le titre utilisé n\'est pas du type string');
             return;
-        }*/
+        }
         
-        $this->_creation_date = $date ;
+        $this->_creation_date_fr = $date_fr ;
     }
     
     public function setImg($img){
@@ -104,8 +104,8 @@ class Post {
     public function content(){
         return $this->_content ;
     }
-    public function creation_date(){
-        return  $this->_creation_date;
+    public function creation_date_fr(){
+        return  $this->_creation_date_fr;
     }
     public function img(){
         return  $this->_img;

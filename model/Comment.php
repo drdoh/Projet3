@@ -9,7 +9,7 @@ class Comment {
     private $_post_id;
     private $_author;
     private $_comment;
-    private $_comment_date;
+    private $_comment_date_fr;
     private $_alert;
     private $_stand_by;
     private $_published;
@@ -58,7 +58,7 @@ class Comment {
             return;
         }
         
-        $this->_postId = $postId ;
+        $this->_post_id = $postId ;
     }
     
     public function setAuthor($author){
@@ -79,13 +79,12 @@ class Comment {
         $this->_comment = $comment ;
     }
     
-    public function setComment_date($date){
-        if(!is_string($date)){
+    public function setComment_date_fr($date_fr){
+        if(!is_string($date_fr)){
             throw new Exception('Erreur : le titre utilisé n\'est pas du type string');
             return;
         }
-        
-        $this->_commentDate = $date ;
+        $this->_comment_date_fr = $date_fr ;
     }
     
     public function setAlert($alert){
@@ -155,8 +154,8 @@ class Comment {
     public function comment(){
         return $this->_comment ;
     }
-    public function comment_date(){
-        return $this->_comment_date;
+    public function comment_date_fr(){
+        return $this->_comment_date_fr;
     }
     public function alert(){
         return $this->_alert;

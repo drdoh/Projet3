@@ -30,16 +30,8 @@ if (isset($_GET['action'])) {
                     break;   
 
 /* -------------- \\\\\\\ POST////// ----------------- */
-
                 case "post" : 
-                    if (isset($_GET['id']) && $_GET['id'] > 0) {
-                        post();
-
-                    }
-                    else {
-                        throw new Exception('Erreur : aucun identifiant de billet envoyé');
-
-                    }
+                    post($_GET['id']);
                     break;
 
                 case "listPosts" : 
@@ -49,18 +41,7 @@ if (isset($_GET['action'])) {
 /* -------------- \\\\\\\ COMMENT ////// ----------------- */
 
                 case "addComment" : 
-                    if (isset($_GET['id']) && (int) $_GET['id'] > 0){
-                        if(!empty($_POST['author']) && !empty($_POST['comment'])) {
-                        addComment($_GET['id'],$_POST['author'], $_POST['comment']); 
-
-                        }else{
-                        throw new Exception('Erreur : aucun message envoyé');
-
-                        }
-                    }else{
-                    throw new Exception('Erreur : aucun identifiant de billet envoyé');
-
-                    }
+                    addComment($_GET['id'],$_POST['author'], $_POST['comment']); 
                     break;
                 
                 case "alertComment" : 
