@@ -1,19 +1,21 @@
 
-<?php ob_start(); ?>
+<?php   ob_start();
+        require('view/nav-layout.php'); 
+        require('view/footer-layout.php'); ?>
 
 <div class="container">
-    
-    <h1>Oups Erreur !</h1>
+    <section>
+        <h1 class="text-center mb-5">Oups Erreur !</h1>
 
-    <div class="jumbotron">
+        <div class="jumbotron">
+            <strong>Une erreur est survenue : </strong> <?= $e->getMessage()?> 
+        </div>
 
-    <strong>Une erreur est survenue : </strong> </br><?= $e->getMessage()?> </br>Erreur N°<?= $e->getCode()?> à la ligne <?= $e->getLine()?> du fichier <?= $e->getFile()?>
-
-    </div>
-
-    <div class="d-flex justify-content-center">
-        <a href="index.php"><button type="button" class="btn btn-primary btn-lg ">Retour à l'acceuil</button></a></div>
-    </div>
+        <div class="d-flex justify-content-center">
+            <a href="index.php"><button type="button" class="btn btn-primary btn-lg ">Retour à l'acceuil</button></a></div>
+        </div>
+    </section>
+</div>
 <?php
 $content = ob_get_clean();
 require('view/layout.php');

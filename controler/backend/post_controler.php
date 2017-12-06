@@ -104,6 +104,7 @@ function verifyChapter($chapter){
         die();
     }
 }
+
 function verifyTitle($title){
     if(isset($title)&&($title!='')){
         
@@ -114,6 +115,7 @@ function verifyTitle($title){
         die();
     }
 }
+
 function verifyContent($content){
     if(isset($content)&&($content!='')){
         

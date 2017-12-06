@@ -10,9 +10,8 @@
         <div class="container p-0">
             <ul class="list-group">
                 <?php
-                if(!empty($posts)){
-                foreach($posts as $post){
-                
+                if(!empty($posts)):
+                foreach($posts as $post):
                 $extrait = substr(strip_tags($post->content()),0,600);
                 ?>
                 <li class="list-group-item list-group-item-action flex-column align-items-start">
@@ -29,11 +28,13 @@
                         </div>           
                     </div>
                 </li> 
-                <?php }}else{ ?>
+                <?php 
+                    endforeach; 
+                    else:?>
                         <li class="list-group-item list-group-item-action flex-column align-items-start">
                             <p class="col-12">Il n'y a pas encore de chapitre</p>
                         </li>
-                <?php } ?>
+                <?php endif;?>
             </ul>
         </div>
     </section>
