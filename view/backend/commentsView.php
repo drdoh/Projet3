@@ -17,7 +17,7 @@ require('view/backend/commentOption/commentGlobOptionView.php');?>
                 <li class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="row ">
                         <div class="col-6">
-                            <p><strong><?= $comment->author() ?></strong> le <?= $comment->comment_date()?></p>
+                            <p><strong><?= $comment->author() ?></strong> le <?= $comment->comment_date_fr()?></p>
                             <p><?= $comment->comment()?> </p>
                         </div>
                         <div class="col-2 align-self-center">

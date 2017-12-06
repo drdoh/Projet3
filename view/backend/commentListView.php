@@ -25,7 +25,7 @@ require('view/backend/commentOption/commentGlobOptionView.php');
                     <?=$status?>
                   </div>         
                   <div class="col-sm-10">
-                    <h3> <?=$comment->author()?> </h3><em>le <?=$comment->comment_date() ?></em>
+                    <h3> <?=$comment->author()?> </h3><em>le <?=$comment->comment_date_fr() ?></em>
                     <p><?=$comment->comment()?></p>
                   </div>
                 </div>

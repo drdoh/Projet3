@@ -211,7 +211,7 @@ header.masthead {
   @media (max-width: 768px) {
     .portfolio-box .portfolio-box-caption {
       opacity: 0.9;
-      background: rgba(255, 244, 241, 0.3);}
+      background: rgba(0, 0, 0, 0.5);}
     .project-category, .project-name{
       text-shadow: 0.5px 0.5px 2px rgba(240, 95, 64, 0.8);
       color:white;  } }  

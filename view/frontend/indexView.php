@@ -15,7 +15,7 @@
       </div>
       <div class="col-lg-8 mx-auto">
         <p class="mb-5">Blog de l'acteur et écrivain Jean Forteroche</p>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#last-post">Voir plus ...</a>
+        <a href="#last-post" class="js-scroll-trigger"><button type="button" class="btn-xl btn btn-primary">Voir plus ... ...</button></a> 
       </div>
     </div>
   </div>
