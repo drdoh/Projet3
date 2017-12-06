@@ -26,7 +26,7 @@
 <section id="last-post">
   <div class="container">
     <div class="row">
-      <div class="mb-5 col-lg-12 text-center">
+      <div class="mb-auto col-lg-12 text-center">
         <h2 class="section-heading text-capitalize">Mes derniers exploits</h2>
         <hr class="my-4">
       </div>
@@ -55,9 +55,13 @@
     </div>
   </div>
   
-  <div class="mt-5 d-flex justify-content-center">
-    <a href="index.php?action=listPosts"><button type="button" class="btn btn-primary btn-lg ">  Cliquez ici pour retrouver l'intégralité des chapitres ...</button></a> 
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="mt-5 col-lg-12 text-center">
+      <a href="index.php?action=listPosts"><button type="button" class="btn btn-primary btn-lg btn-block ">Liste des chapitres ...</button></a> 
+      </div>
+    </div>
+  </div>  
 </section>
 <!-- ______________************* ZONE DE CONTACT ****************________ -->
 
@@ -67,7 +71,7 @@
       <div class="col-lg-8 mx-auto text-center">
         <h2 class="section-heading">Contactez moi !</h2>
         <hr class="my-4">
-        <p class="mb-5">Je vous répondrais peut-être ...</p>
+        <p class="mb-auto">Je vous répondrais peut-être ...</p>
       </div>
     </div>
     <div class="row">
