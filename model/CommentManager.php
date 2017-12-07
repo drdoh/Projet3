@@ -66,10 +66,10 @@ class CommentManager extends DBManager{
 
     public function getComment($commentId)
     {
-        $req = $this->db()->prepare('   SELECT id, post_id, author, comment
-                                FROM comments
-                                WHERE id = ?
-                                ');
+        $req = $this->db()->prepare('   SELECT * ,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
+                                        FROM comments
+                                        WHERE id = ?
+                                        ');
         $req->execute(array($commentId));
         $datas = $req->fetch();
         $comment=new Comment($datas);

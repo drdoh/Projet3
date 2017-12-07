@@ -17,7 +17,7 @@ hr.light {
   border-color: rgb(174, 174, 174); }
 
 a {
-  color: #F05F40 !important;
+  color: #F05F40;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   transition: all 0.2s;  }
@@ -27,6 +27,9 @@ a {
     background-color:#F05F40 !important;
     border-color:#F05F40 !important ;
     color: white !important;
+  }
+  .page-link{
+    color: #F05F40 !important;
   }
 
 h1,
@@ -246,6 +249,15 @@ header.masthead {
 
 .jumbotron {
   background-color:rgba(222, 222, 222, 0.6);
+}
+
+.btn-outline-primary{
+  color: #ee4b28 !important;
+}
+.btn-outline-primary:hover{
+  background-color: #ee4b28 !important;
+  color: white !important;
+  border-color: #ee4b28;
 }
 
 /*POUR LE FORMULAIRE*/

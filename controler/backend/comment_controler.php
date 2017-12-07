@@ -124,8 +124,7 @@ function editcomment($id, $postId){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $comment=$commentManager->getComment($id);
     $postManager = new JeanForteroche\Blog\Model\PostManager();
-    $post=$postManager->getPost($postId);
-    
+    $post=$postManager->getPost($postId);  
     require('controler/nav-controler.php');
     require('view/backend/editCommentView.php');
 }
