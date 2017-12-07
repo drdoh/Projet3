@@ -27,6 +27,7 @@ require('view/backend/commentOption/commentGlobOptionView.php');
                   <div class="col-sm-10">
                     <h3> <?=$comment->author()?> </h3><em>le <?=$comment->comment_date_fr() ?></em>
                     <p><?=$comment->comment()?></p>
+                    <p><a href="index.php?action=showpostcomments&id=<?=$comment->post_id()?>"> <em>Voir les commentaires sur le meme chapitre >>><em></a></p>
                   </div>
                 </div>
                 <div class="row">
