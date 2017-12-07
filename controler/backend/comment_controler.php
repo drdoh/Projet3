@@ -20,7 +20,7 @@ function indexComments(){
 function allComments(){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $comments = $commentManager->getAllComments();
-    $title="Tout les commentaires";
+    $title="Tous les commentaires";
     require('controler/nav-controler.php');
     require('view/backend/commentListView.php');
 }
@@ -242,8 +242,8 @@ function rejectListedComment($filter, $id){
     header('Location: index.php?action='.$_GET['page'].'&id='.$id);
 }
 
-function updateComment($commentId,$author,$comment,$postId){
+function updateComment($commentId,$comment,$postId){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-    $commentManager->updateComment($commentId,$author,$comment);   
+    $commentManager->updateComment($commentId,$comment);   
     header('Location: http://localhost/Projet3/index.php?action=editcomment&id='.$commentId.'&postid='.$postId.'');
 }

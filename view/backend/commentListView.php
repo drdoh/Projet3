@@ -5,7 +5,7 @@ require('view/backend/commentOption/commentGlobOptionView.php');
 
 <div class="container">
 
-  <h1 class="m-4 text-center"> <?= $title?> </h1>
+  <h1 class="m-4 text-center"> <?=$title?> </h1>
   <div class="row">
     <?=$commentGlobalOption;?>      
   </div>

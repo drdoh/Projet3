@@ -1,6 +1,7 @@
 <?php ob_start();
 require('view/backend/commentOption/commentGlobOptionView.php');?>
 <div class="container">
+    <p><a href="index.php">Retour à la liste des chapitres</a></p>
     <div class="row">
         <div class="col-sm ">           
             <h1 class="m-4 text-center">Commentaires de l'article : <?=$post->title()?></h1>

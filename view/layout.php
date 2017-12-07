@@ -53,7 +53,8 @@
 
     <!-- tinymce scripts -->
     <script src="web/js/tinymce/tinymce.js"></script>
-    <script>tinymce.init({ selector:'textarea',min_height: 700 });</script>
+    <script>tinymce.init({selector:'textarea#comment',min_height: 200});</script>
+    <script>tinymce.init({selector:'textarea#post',min_height: 700});</script>
   </body>
 
 </html>

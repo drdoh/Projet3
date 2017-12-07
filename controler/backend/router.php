@@ -86,7 +86,7 @@ if (isset($_GET['action'])){
         break;
 
         case "updateComment" :
-            updateComment($_GET['id'], $_POST['author'],$_POST['comment'],$_GET['postid']);
+            updateComment($_GET['id'],$_POST['comment'],$_GET['postid']);
         break;
 
         case "acceptlistedcomments" : 

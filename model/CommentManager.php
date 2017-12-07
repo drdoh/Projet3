@@ -78,7 +78,7 @@ class CommentManager extends DBManager{
     
     public function getFilteredComments($filter)
     {
-        $req = $this->db()->query(' SELECT *
+        $req = $this->db()->query(' SELECT * ,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     WHERE  '.$filter.' = TRUE
                                     ORDER BY comment_date DESC
@@ -96,7 +96,7 @@ class CommentManager extends DBManager{
 
     public function getAlertComments()
     {
-        $req = $this->db()->query(' SELECT *
+        $req = $this->db()->query(' SELECT *,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr
                                     FROM comments 
                                     WHERE  Alert >= 1
                                     ORDER BY comment_date DESC
@@ -150,14 +150,13 @@ class CommentManager extends DBManager{
 
 /* \\\\\\\\\\\::: UPDATE  ::::///////////: */
 
-    public function updateComment($commentId,$author,$comment)
+    public function updateComment($commentId,$comment)
     {
         $req = $this->db()->prepare('   UPDATE comments 
-                                SET author= :newauthor, comment= :newcomment
+                                SET comment= :newcomment
                                 WHERE id = :id                                    
                                     ');
         $req->execute(array(
-            'newauthor'=>$author,
             'newcomment'=>$comment,
             'id'=>$commentId
         ));

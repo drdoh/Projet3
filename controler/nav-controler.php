@@ -7,10 +7,10 @@
     $button3='<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?action=indexcomment">Voir les commentaires</a>';
     
   }else{
-    $value = 'Connexion';
+    $value = 'Administration';
     $url = 'index.php?action=admin' ;
     $button1='<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?action=aboutme">A Propos</a>';
-    $button2='<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php#last-post">Mes chapitres</a></li>';
+    $button2='<li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?action=listPosts">Les chapitres</a></li>';
     $button3= '<li class="nav-item"> <a class="nav-link js-scroll-trigger" href="index.php#contact">Contact</a></li>';
   }
   

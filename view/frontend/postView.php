@@ -5,7 +5,7 @@
 <!-- POST ZONE -->
 <div class="container my-auto">
     <h1><?= $post->title()?></h1>
-    <p><a href="index.php?action=listPosts">Retour à la liste des billets</a></p>
+    <p><a href="index.php?action=listPosts">Retour à la liste des chapitres</a></p>
 
     <div>
         <h6 class="text-right"> <em> <?= $post->creation_date_fr() ?></em> </h6>
@@ -34,7 +34,7 @@
 
         <!-- RIGHT COLLUMN -->    
         <div class="col-sm">
-            <h2>Laissez votre commetaire</h2>
+            <h2>Laissez votre commentaire</h2>
             <form method="post" action="index.php?action=addComment&amp;id=<?=$post->id()?>">
                 <p>
                     <Label for="author"><strong>Votre nom</strong></Label></br>

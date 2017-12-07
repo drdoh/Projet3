@@ -13,13 +13,13 @@
               <a class="nav-link js-scroll-trigger" href="<?='index.php?action=aboutme'?>">A Propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#last-post">Mes derinieres Aventures</a>
+              <a class="nav-link js-scroll-trigger" href="index.php?action=listPosts">Les Chapitres</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="index.php?action=admin">Connexion</a>
+              <a class="nav-link js-scroll-trigger" href="index.php?action=admin">Administration</a>
             </li>
           </ul>
         </div>
