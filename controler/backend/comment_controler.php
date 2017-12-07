@@ -245,5 +245,5 @@ function rejectListedComment($filter, $id){
 function updateComment($commentId,$comment,$postId){
     $commentManager = new JeanForteroche\Blog\Model\CommentManager();
     $commentManager->updateComment($commentId,$comment);   
-    header('Location: http://localhost/Projet3/index.php?action=editcomment&id='.$commentId.'&postid='.$postId.'');
+    header('Location: index.php?action=editcomment&id='.$commentId.'&postid='.$postId.'');
 }

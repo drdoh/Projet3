@@ -1,5 +1,12 @@
 
 <?php
+if(!empty($_POST)){
+    $postAuthor= $_POST['author'];
+    $postComment=$_POST['comment'];
+}else{
+$postAuthor='';
+$postComment='';
+}
  ob_start();?>
 
 <!-- POST ZONE -->
@@ -9,6 +16,7 @@
 
     <div>
         <h6 class="text-right"> <em> <?= $post->creation_date_fr() ?></em> </h6>
+        <div class="text-center"> <?php if(isset($message)){echo $message;}?> </div>
         
         <div class="content" >
             <?= $post->content() ?>
@@ -38,11 +46,11 @@
             <form method="post" action="index.php?action=addComment&amp;id=<?=$post->id()?>">
                 <p>
                     <Label for="author"><strong>Votre nom</strong></Label></br>
-                    <input type="text" id="author" name="author">
+                    <input type="text" id="author" name="author" value="<?=$postAuthor?>">
                 </p>
                 <p>
                     <Label for="comment" ><strong>Votre message</strong></Label></br>
-                    <textarea name="comment" id="comment" rows="8" cols="45"></textarea>
+                    <textarea name="comment" id="comment" rows="8" cols="45"><?=$postComment?></textarea>
                 </p>
                 <p>
                     <input type="submit">
